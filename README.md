@@ -32,3 +32,29 @@ mentorías y programas de formación: Product Owner (fuerte principal) y metodol
 2. Biblioteca de plantillas descargables (DoR/DoD, retros).
 3. CONFIG.whatsapp con número real.
 4. Endpoint IA para feedback automático.
+
+## Capa de Agente IA (automatización de todo contacto con personas)
+Filosofía: agente (LLM + herramientas + base de conocimiento), NO bot de reglas.
+KB = este repo (sitio + políticas de precios/pagos). Canal principal: WhatsApp Business
+(Cloud API, gratis). Respaldo: correo.
+
+### Contrato de endpoints (el sitio ya habla este idioma)
+| Endpoint | Payload | Respuesta | Uso |
+|---|---|---|---|
+| POST /evaluate | {answer, rubric:"po-40-30-30"} | {feedback} | Botón "Feedback con IA" → CONFIG.aiEndpoint |
+| POST /lead | {name, email, source, ts} | 204 | Notificación automática de leads (YA CABLEADO) → CONFIG.leadEndpoint |
+| POST /quiz | {answers[]} | {level, recommendedPack, message} | Quiz de nivel (backlog) |
+| POST /plan | {sessionNotes} | {plan} | Plan de mejora post-sesión |
+| POST /followup | {leadId, type} | 204 | Recordatorios 24h y reactivación de leads fríos |
+
+### Mapa de automatización (interacción → agente)
+- Descarga de guía → el sitio ya notifica al agente (leadEndpoint) + abre WhatsApp.
+- Click en pack → agente responde 24/7: precios, datos de transferencia, agenda, objeciones.
+- Feedback de casos → evaluador automático con la rúbrica (aiEndpoint).
+- FAQ → agente con KB del sitio (WhatsApp/correo).
+- Agenda → agente ofrece horarios vía Cal.com API (CONFIG.bookingLink).
+- Post-sesión → agente redacta el plan desde notas de la sesión.
+
+### Implementación sugerida
+n8n (self-host) o servidor propio + API de LLM + WhatsApp Cloud API de Meta.
+Orden de construcción: 1) /evaluate, 2) agente WhatsApp con KB, 3) /quiz, 4) /followup.
