@@ -456,6 +456,19 @@
         <div class="card" data-hover><h3 style="font-size:1.15rem">Reforge</h3><p>Programas profundos por tema, creados por operadores de Airbnb, Spotify.</p><p style="color:var(--lime);font-size:.8rem;margin-top:.6rem">→ Ideal cuando ya trabajes el rol y quieras profundizar.</p></div>
         <div class="card" data-hover><h3 style="font-size:1.15rem">GoPractice</h3><p>Simulador hands-on de producto: aprender haciendo, como aquí.</p><p style="color:var(--lime);font-size:.8rem;margin-top:.6rem">→ Mismo espíritu; nosotros con feedback humano 1:1.</p></div>
       </div>
+      <div class="anim d5" style="background:var(--smoke);border:1px solid rgba(255,255,255,.1);border-radius:1.2rem;padding:1.4rem 1.6rem;margin-top:1.2rem;overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:.85rem;color:var(--mist)">
+          <tr style="color:#fff"><th style="text-align:left;padding:.5rem .8rem .5rem 0"></th><th style="text-align:left;padding:.5rem .8rem">PSPO · Scrum.org</th><th style="text-align:left;padding:.5rem .8rem">CSPO · Scrum Alliance</th></tr>
+          <tr><td style="padding:.45rem .8rem .45rem 0;color:var(--lime)">Costo</td><td>~US$200 (solo examen)</td><td>~US$800–1.600 (curso obligatorio incluido)</td></tr>
+          <tr><td style="padding:.45rem .8rem .45rem 0;color:var(--lime)">Formato</td><td>Examen en línea, autoestudio</td><td>Curso en vivo de 2 días</td></tr>
+          <tr><td style="padding:.45rem .8rem .45rem 0;color:var(--lime)">Vencimiento</td><td>No vence</td><td>Cada 2 años (US$100 + unidades educativas)</td></tr>
+          <tr><td style="padding:.45rem .8rem .45rem 0;color:var(--lime)">Estilo</td><td>Rigor en la aplicación de Scrum</td><td>Experiencia guiada y red de comunidad</td></tr>
+        </table>
+        <p style="font-size:.68rem;margin-top:.8rem">Precios referenciales 2026 — verifica siempre en scrum.org y scrumalliance.org.</p>
+      </div>
+      <div class="anim d6" style="margin-top:1.2rem">
+        <button class="btn-lime" style="font-size:.95rem;padding:.9rem 2rem" onclick="downloadPspoGuide()" data-hover>Descargar guía PSPO vs CSPO</button>
+      </div>
       <p class="anim d5" style="color:var(--mist);font-size:.7rem;margin-top:1.4rem">Marcas mencionadas solo como referencia del ecosistema. No tenemos afiliación con ellas.</p>
     </div>
   </section>
@@ -872,6 +885,46 @@ if (mentorImg && mentorWrap) {
   mentorWrap.addEventListener('mouseleave', () => { mentorImg.src = bnSrc; });
 }
 
+const PSPO_CSO_GUIDE =
+`GUÍA CORTA — PSPO vs CSPO: qué pagar, cuál evitar y por qué
+============================================================
+
+LOS DATOS (referenciales, 2026 — verifica en los sitios oficiales)
+- PSPO I (Scrum.org): ~US$200, solo examen en línea. NO vence.
+- CSPO (Scrum Alliance): ~US$800–1.600, incluye curso obligatorio
+  en vivo de 2 días. Vence cada 2 años (~US$100 + unidades educativas).
+
+CUÁL ELEGIR SEGÚN TU PERFIL
+1. Quieres el papel más barato y tu inglés lee bien:
+   PSPO I. Estudia la Scrum Guide (gratis en scrumguides.org),
+   practica con simulacros y rinde. Enfocado en rigor del framework.
+2. Quieres experiencia guiada, en vivo, con gente real y red
+   de contactos: CSPO. Pagas más, pero el curso te obliga a
+   practizar dos días seguidos.
+3. No sabes scrum básico aún: NINGUNA todavía. Primero
+   fundamentos; rendir sin saber es quemar plata.
+
+LA VERDAD INCÓMODA
+La certificación demuestra que aprobaste un examen o asististe
+a un curso. Ninguna demuestra que puedas ordenar un backlog
+con un negocio presionando, negociar un sprint imposible o
+decir que no con datos. Eso se entrena en la cancha: con casos
+reales y feedback de alguien que ejerce el rol.
+
+¿Y EN CHILE/LATAM?
+Los dos papeles se reconocen en filtros de reclutamiento, sí.
+Pero en entrevistas lo que te separa es contar con criterio
+cómo resolviste problemas de verdad. El papel abre la puerta;
+la práctica te deja pasar.
+
+ORIENTACIÓN GRATIS
+En la primera sesión te cuento, según tu situación concreta,
+si te conviene certificarte ahora, cuál, o si tu plata rinde
+más en práctica primero. Sin compromiso.
+
+— frio.cl
+`;
+
 /* =========================================================
    FORMULARIO DE CONTACTO — canal único con personas.
    Requiere CONFIG.formEndpoint (Formspree: https://formspree.io/f/TU_ID).
@@ -969,6 +1022,16 @@ document.getElementById('contactForm').addEventListener('submit', async e => {
 });
 
 /* exponer funciones para los onclick del HTML */
+function downloadPspoGuide(){
+  const blob = new Blob([PSPO_CSO_GUIDE], { type:'text/plain;charset=utf-8' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'guia-pspo-vs-cspo.txt';
+  a.click(); URL.revokeObjectURL(a.href);
+  setTimeout(() => openContact('Acabo de descargar la guía PSPO vs CSPO y quiero conversar mi caso.', null, null, 'Duda general'), 500);
+}
+window.downloadPspoGuide = downloadPspoGuide;
+
 window.goTo = goTo;
 window.openOverlay = openOverlay;
 window.closeOverlay = closeOverlay;
