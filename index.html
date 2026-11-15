@@ -532,7 +532,8 @@ const CONFIG = {
     p3: { name:'Programa Completo (6 sesiones)', price:'$180.000' },
     p4: { name:'Agile Essentials (2 sesiones)', price:'$70.000' }
   },
-  aiEndpoint: '',      // TODO: URL de tu evaluador IA (ver documentación en el chat)
+  aiEndpoint: '',      // POST /evaluate — feedback con rúbrica de respuestas escritas
+  leadEndpoint: '',    // POST /lead — notificación de leads (guía, packs) al agente
   bookingLink: '',     // TODO: link Cal.com/Calendly cuando lo tengas
   email: ''            // TODO: tu correo para respaldo de leads (mailto)
 };
@@ -701,6 +702,11 @@ document.getElementById('freeForm').addEventListener('submit', e => {
   const lead = encodeURIComponent(`Hola, soy ${name} (${email}). Acabo de descargar la guía y quiero saber más sobre los programas.`);
   setTimeout(() => window.open(`https://wa.me/${CONFIG.whatsapp}?text=${lead}`, '_blank'), 600);
   closeOverlay('freeOverlay');
+  /* Agente IA: notificar el lead (silencioso; no bloquea si falla) */
+  if (CONFIG.leadEndpoint) {
+    fetch(CONFIG.leadEndpoint, { method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ name, email, source:'guia-historias-de-usuario', ts: Date.now() }) }).catch(() => {});
+  }
 });
 
 /* =========================================================
