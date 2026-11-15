@@ -198,8 +198,9 @@
       <button onclick="goTo(1)" data-nav="1" data-hover>Aprendizaje</button>
       <button onclick="goTo(2)" data-nav="2" data-hover>Metodología</button>
       <button onclick="goTo(3)" data-nav="3" data-hover>Práctica</button>
-      <button onclick="goTo(4)" data-nav="4" data-hover>Mentor</button>
-      <button onclick="goTo(5)" data-nav="5" data-hover>Programas</button>
+      <button onclick="goTo(4)" data-nav="4" data-hover>Tu nivel</button>
+      <button onclick="goTo(5)" data-nav="5" data-hover>Mentor</button>
+      <button onclick="goTo(6)" data-nav="6" data-hover>Programas</button>
       <button onclick="openContact()" data-hover>Contacto</button>
       <button onclick="openOverlay('faqOverlay')" data-hover>FAQ</button>
     </nav>
@@ -345,6 +346,16 @@
   </section>
 
   <!-- PANTALLA 4 · MENTOR -->
+  <!-- PANTALLA 5 · TU NIVEL -->
+  <section class="slide" data-name="Tu nivel">
+    <div class="swrap">
+      <p class="eyebrow anim d1">Test de 1 minuto</p>
+      <h2 class="h-title anim d2" style="font-size:clamp(2rem,5vw,4rem);margin:.6rem 0 .4rem">&iquest;En qu&eacute; <span class="stroke-white">nivel</span> est&aacute;s?</h2>
+      <p class="anim d3" style="color:var(--mist);max-width:58ch;line-height:1.6">Cinco preguntas r&aacute;pidas. Sin nota y sin trampa: solo para recomendarte el programa que de verdad te sirve.</p>
+      <div class="anim d4" id="quizBox" style="max-width:720px;margin-top:1.6rem"></div>
+    </div>
+  </section>
+
   <section class="slide" data-name="Mentor">
     <div class="swrap">
       <div class="mentor-grid">
@@ -866,6 +877,61 @@ if (mentorImg && mentorWrap) {
    Requiere CONFIG.formEndpoint (Formspree: https://formspree.io/f/TU_ID).
    El correo de destino vive en el servicio, NUNCA en este código.
    ========================================================= */
+/* =========================================================
+   QUIZ DE NIVEL — 5 preguntas, una a la vez, voz humana.
+   Recomienda un programa según el resultado.
+   ========================================================= */
+const QUIZ = [
+  { q:'¿Has trabajado en un equipo que use Scrum o Kanban?',
+    a:['Todavía no','Lo he visto de cerca','Sí, activamente'], w:[0,1,2] },
+  { q:'¿Qué es para ti una historia de usuario?',
+    a:['No lo sé bien','Una frase que va al backlog','Un compromiso verificable, con criterios de aceptación'], w:[0,1,2] },
+  { q:'El equipo promete 40 puntos con velocidad histórica de 18. ¿Qué haces?',
+    a:['Acepto y vemos qué pasa','Negocio el alcance con datos','Pido más tiempo de inmediato'], w:[0,2,1] },
+  { q:'¿Has facilitado planning, review o retrospectivas?',
+    a:['Nunca','Participé en varias','Las facilito con frecuencia'], w:[0,1,2] },
+  { q:'¿Qué buscas principalmente?',
+    a:['Entender de qué va todo esto','Trabajar como Product Owner','Metodología ágil para mi equipo o proyecto'], w:[0,1,1] },
+];
+let qi = 0, qscore = 0;
+function renderQuiz(){
+  const box = document.getElementById('quizBox');
+  if (!box) return;
+  if (qi < QUIZ.length) {
+    const item = QUIZ[qi];
+    box.innerHTML = '<p style="color:var(--mist);font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:.9rem">Pregunta ' + (qi+1) + ' de ' + QUIZ.length + '</p>'
+      + '<h3 class="h-title" style="font-size:clamp(1.3rem,2.6vw,2rem);text-transform:none;margin-bottom:1.3rem">' + item.q + '</h3>'
+      + '<div style="display:grid;gap:.7rem">' + item.a.map((t,i) =>
+          '<button class="btn-full q-opt" data-i="' + i + '" style="text-align:left;padding:1rem 1.4rem" data-hover>' + t + '</button>').join('') + '</div>'
+      + '<div style="margin-top:1.3rem;height:3px;background:rgba(255,255,255,.1);border-radius:99px">'
+      + '<div style="height:100%;width:' + (qi/QUIZ.length*100) + '%;background:var(--lime);border-radius:99px;transition:width .4s"></div></div>';
+    box.querySelectorAll('.q-opt').forEach(b => b.addEventListener('click', () => {
+      qscore += item.w[parseInt(b.dataset.i, 10)];
+      qi++;
+      renderQuiz();
+    }));
+  } else {
+    const res = qscore <= 2
+      ? ['Nivel 0 — partamos de cero', 'Lo mejor es el Programa Base: fundamentos aplicados y tu primer backlog en la primera semana. Si prefieres probar primero, la Sesión de prueba es la puerta de entrada.', 'p2']
+      : qscore <= 5
+      ? ['Nivel 1 — tienes bases, te falta práctica dirigida', 'El Programa Base (3 sesiones) te lleva de "lo he visto" a "lo hago": casos reales, rúbrica y plan entre sesiones.', 'p2']
+      : qscore <= 8
+      ? ['Nivel 2 — buena base, subamos el estándar', 'El Programa Completo (6 sesiones): ceremonias, métricas y un portafolio real para tu CV. Si tu foco es tu equipo, Agile Essentials te sirve más.', 'p3']
+      : ['Nivel 3 — ya operas, afirmemos el rol', 'Programa Completo para consolidar tu portafolio, y en la primera sesión te oriento gratis sobre PSPO vs CSPO.', 'p3'];
+    box.innerHTML = '<p style="color:var(--lime);font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;margin-bottom:.9rem">Resultado</p>'
+      + '<h3 class="h-title" style="font-size:clamp(1.4rem,3vw,2.2rem);margin-bottom:1rem">' + res[0] + '</h3>'
+      + '<p style="color:var(--mist);line-height:1.7;max-width:58ch;margin-bottom:1.6rem">' + res[1] + '</p>'
+      + '<div style="display:flex;gap:.8rem;flex-wrap:wrap">'
+      + '<button class="btn-solid" style="width:auto;padding:.95rem 2rem" onclick="buyPack(\'' + res[2] + '\')" data-hover>Ver ese programa</button>'
+      + '<button class="btn-ghost" style="padding:.95rem 2rem" onclick="openContact(\'Hice el test de nivel y quiero conversar mi resultado.\', null, null, \'Duda general\')" data-hover>Prefiero conversarlo</button>'
+      + '<button class="btn-full" id="quizReset" style="width:auto;padding:.95rem 1.6rem" data-hover>Repetir el test</button>'
+      + '</div>';
+    document.getElementById('quizReset').addEventListener('click', () => { qi = 0; qscore = 0; renderQuiz(); });
+  }
+}
+renderQuiz();
+
+/* FORMULARIO DE CONTACTO — canal único con personas (sigue abajo). */
 function openContact(prefill, name, email, topic){
   if (prefill !== undefined && prefill !== null) document.getElementById('ctMsg').value = prefill;
   if (name) document.getElementById('ctName').value = name;
