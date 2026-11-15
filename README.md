@@ -33,10 +33,15 @@ mentorías y programas de formación: Product Owner (fuerte principal) y metodol
 3. CONFIG.whatsapp con número real.
 4. Endpoint IA para feedback automático.
 
+## Contacto con personas (decisión vigente)
+SIN números de teléfono en el sitio. SIN enlaces wa.me. Canal único: **formulario de
+contacto** (nombre, correo, tema, mensaje) → servicio externo (Formspree) → correo de
+Pedro. El correo de destino vive en el servicio, nunca en el código (CONFIG.formEndpoint).
+
 ## Capa de Agente IA (automatización de todo contacto con personas)
 Filosofía: agente (LLM + herramientas + base de conocimiento), NO bot de reglas.
-KB = este repo (sitio + políticas de precios/pagos). Canal principal: WhatsApp Business
-(Cloud API, gratis). Respaldo: correo.
+KB = este repo (sitio + políticas de precios/pagos). Canal principal: formulario/correo.
+Respaldo futuro: WhatsApp Business (solo si Pedro lo autoriza).
 
 ### Contrato de endpoints (el sitio ya habla este idioma)
 | Endpoint | Payload | Respuesta | Uso |
@@ -48,8 +53,8 @@ KB = este repo (sitio + políticas de precios/pagos). Canal principal: WhatsApp 
 | POST /followup | {leadId, type} | 204 | Recordatorios 24h y reactivación de leads fríos |
 
 ### Mapa de automatización (interacción → agente)
-- Descarga de guía → el sitio ya notifica al agente (leadEndpoint) + abre WhatsApp.
-- Click en pack → agente responde 24/7: precios, datos de transferencia, agenda, objeciones.
+- Descarga de guía → el sitio abre el formulario de contacto con mensaje prefijado.
+- Click en pack → formulario de contacto con el pack ya anotado; el agente responde por correo.
 - Feedback de casos → evaluador automático con la rúbrica (aiEndpoint).
 - FAQ → agente con KB del sitio (WhatsApp/correo).
 - Agenda → agente ofrece horarios vía Cal.com API (CONFIG.bookingLink).
@@ -64,7 +69,7 @@ Orden de construcción: 1) /evaluate, 2) agente WhatsApp con KB, 3) /quiz, 4) /f
 - Usa el nombre de la persona apenas la conoces y recuérdalo entre mensajes.
 - Estructura: saludo breve + reconocimiento de lo que dijo + respuesta + máximo UNA pregunta.
 - Admite dudas con naturalidad ("puede que no tenga el dato exacto de tu caso, pero…") en vez de inventar.
-- Largo tipo mensaje de WhatsApp: 2–4 frases cortas, párrafos chicos; listas solo si piden un plan.
+- Largo tipo correo breve: 2–4 frases cortas, párrafos chicos; listas solo si piden un plan.
 - Latencia humana: nunca responder al instante; 1.5–4 s según complejidad, con indicador de "escribiendo…".
 - Firma con criterio ("— tu mentor") y despedidas cálidas pero breves.
 - El sitio ya implementa esto: latencia mínima + escritura progresiva (typeOut) + tono de primera persona.
