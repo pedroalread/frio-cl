@@ -197,10 +197,11 @@
     <nav class="hnav">
       <button onclick="goTo(1)" data-nav="1" data-hover>Aprendizaje</button>
       <button onclick="goTo(2)" data-nav="2" data-hover>Metodología</button>
-      <button onclick="goTo(3)" data-nav="3" data-hover>Práctica</button>
-      <button onclick="goTo(4)" data-nav="4" data-hover>Tu nivel</button>
-      <button onclick="goTo(5)" data-nav="5" data-hover>Mentor</button>
-      <button onclick="goTo(6)" data-nav="6" data-hover>Programas</button>
+      <button onclick="goTo(3)" data-nav="3" data-hover>Ecosistema</button>
+      <button onclick="goTo(4)" data-nav="4" data-hover>Práctica</button>
+      <button onclick="goTo(5)" data-nav="5" data-hover>Tu nivel</button>
+      <button onclick="goTo(6)" data-nav="6" data-hover>Mentor</button>
+      <button onclick="goTo(7)" data-nav="7" data-hover>Programas</button>
       <button onclick="openContact()" data-hover>Contacto</button>
       <button onclick="openOverlay('faqOverlay')" data-hover>FAQ</button>
     </nav>
@@ -302,6 +303,27 @@
         <span>N1 · Fundamentos + primer backlog</span><span style="color:var(--lime)">→</span>
         <span>N2 · Ceremonias + métricas</span><span style="color:var(--lime)">→</span>
         <span>N3 · Proyecto final + portafolio</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PANTALLA 4 · ECOSISTEMA ÁGIL -->
+  <section class="slide" data-name="Ecosistema">
+    <div class="swrap">
+      <p class="eyebrow anim d1">M&aacute;s all&aacute; del rol PO</p>
+      <h2 class="h-title anim d2" style="font-size:clamp(2rem,5vw,3.8rem);margin:.6rem 0 .6rem">El ecosistema &aacute;gil, <span class="stroke-white">completo.</span></h2>
+      <p class="anim d3" style="color:var(--mist);max-width:72ch;line-height:1.65;margin-bottom:1.6rem">El fuerte es Product Owner. Pero si tu equipo o tu carrera necesita el tablero completo, tambi&eacute;n ense&ntilde;amos todo lo que lo rodea &mdash; siempre aplicado con casos, nunca de memoria.</p>
+      <div class="anim d4" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem">
+        <div class="card" data-hover><h3 style="font-size:1.1rem">Scrum completo</h3><p>Roles: PO, Scrum Master y Developers. Eventos: planning, daily, review, retro. Artefactos: product backlog, sprint backlog e incremento. C&oacute;mo encajan en un d&iacute;a real, no en un diagrama.</p></div>
+        <div class="card" data-hover><h3 style="font-size:1.1rem">Kanban y flujo</h3><p>L&iacute;mites WIP, pull vs. push, tableros que no mienten. M&eacute;tricas de flujo: lead time, cycle time y Cumulative Flow.</p></div>
+        <div class="card" data-hover><h3 style="font-size:1.1rem">Pr&aacute;cticas t&eacute;cnicas</h3><p>Qu&eacute; son y para qu&eacute; sirven CI, TDD, pair programming y refactoring &mdash; el vocabulario m&iacute;nimo para conversar con desarrollo sin papado.</p></div>
+        <div class="card" data-hover><h3 style="font-size:1.1rem">M&eacute;tricas que importan</h3><p>Velocity, burndown y CFD: cu&aacute;les leer, cu&aacute;les ignorar y por qu&eacute; medir productividad individual destruye equipos.</p></div>
+        <div class="card" data-hover><h3 style="font-size:1.1rem">Los otros roles</h3><p>Scrum Master, agile coach, liderazgo: qu&eacute; hace cada uno, qu&eacute; NO hace, y c&oacute;mo no pisarse entre s&iacute;.</p></div>
+        <div class="card" data-hover><h3 style="font-size:1.1rem">Facilitaci&oacute;n</h3><p>C&oacute;mo facilitar ceremonias que producen decisiones y no teatro: din&aacute;micas de retro, planning efectivo y daily de 15 minutos reales.</p></div>
+      </div>
+      <div class="anim d5" style="display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap;margin-top:1.6rem;border-top:1px solid rgba(255,255,255,.08);padding-top:1.3rem">
+        <p style="color:var(--mist);font-size:.9rem;max-width:52ch;line-height:1.6">Todo esto vive dentro de <b style="color:#fff">Agile Essentials</b> o como complemento de cualquier programa, con los mismos casos y la misma r&uacute;brica.</p>
+        <button class="btn-lime" style="font-size:.95rem;padding:.85rem 1.8rem" onclick="buyPack('p4')" data-hover>Ver Agile Essentials</button>
       </div>
     </div>
   </section>
