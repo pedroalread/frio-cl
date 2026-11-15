@@ -332,7 +332,7 @@
         <textarea id="answerBox" rows="3" placeholder="Escribe cómo lo resolverías como PO..."></textarea>
         <div style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1rem">
           <button class="senior-btn" id="seniorBtn" style="margin-top:0" data-hover>Ver enfoque de un senior <span id="seniorIcon">↓</span></button>
-          <button class="senior-btn" id="aiBtn" style="margin-top:0" data-hover>⚡ Feedback con IA</button>
+          <button class="senior-btn" id="aiBtn" style="margin-top:0" data-hover>Pedir feedback</button>
         </div>
         <div class="senior-answer" id="seniorAnswer">
           <div class="senior-box"><b style="color:var(--lime);text-transform:uppercase;font-size:.72rem;letter-spacing:.12em;display:block;margin-bottom:.5rem">Enfoque senior</b>Primero datos: velocidad real, valor de negocio y dependencias. Propondría un sprint goal único con el negocio y cortaría todo lo que no lo sirve, dejando el resto visible en el backlog sin dramatizar. Decir "no" con criterio es el trabajo. Lo que revela tu respuesta: si ordenas por valor y capacidad, o si solo pides "que definan ellos".</div>
@@ -779,29 +779,48 @@ function showToast(msg, ms){
 document.getElementById('aiBtn').addEventListener('click', async () => {
   const ans = answerBox.value.trim();
   if (ans.split(/\s+/).filter(Boolean).length < 10) {
-    showToast('Escribe al menos 10 palabras para que el feedback tenga sentido.');
+    showToast('Escríbeme al menos un par de líneas, así te digo algo que de verdad sirva.');
     return;
   }
   if (CONFIG.aiEndpoint) {
-    showToast('Evaluando con IA…');
+    showToast('Dame un momento, estoy leyendo tu respuesta con calma…');
+    const t0 = Date.now();
     try {
       const r = await fetch(CONFIG.aiEndpoint, {
         method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({ answer: ans, rubric:'po-40-30-30', lang:'es' })
+        body: JSON.stringify({ answer: ans, rubric:'po-40-30-30', lang:'es', persona:'mentor-directo' })
       });
       const d = await r.json();
-      aiBox.style.display = 'block';
-      aiBox.innerHTML = '<b style="color:var(--lime);text-transform:uppercase;font-size:.72rem;letter-spacing:.12em;display:block;margin-bottom:.5rem">Feedback automático (IA)</b>' + (d.feedback || d.text || 'Sin respuesta del evaluador.');
-      showToast('Listo: feedback generado.', 2600);
+      const fb = d.feedback || d.text || '(silencio incómodo — inténtalo de nuevo en un rato)';
+      /* latencia humana mínima: que se sienta leído por una persona, no calculado */
+      const wait = Math.max(0, 1400 - (Date.now() - t0));
+      setTimeout(() => {
+        aiBox.style.display = 'block';
+        aiBox.innerHTML = '<b style="color:var(--lime);text-transform:uppercase;font-size:.72rem;letter-spacing:.12em;display:block;margin-bottom:.5rem">Mi lectura de tu respuesta</b><span id="aiType"></span><span style="display:block;margin-top:.9rem;color:#666;font-size:.8rem">— si algo no calza, lo conversamos.</span>';
+        typeOut(document.getElementById('aiType'), fb);
+        showToast('Listo, ahí va mi lectura.', 2600);
+      }, wait);
     } catch (e) {
-      showToast('No pude contactar al evaluador IA. Te lo envío por WhatsApp.');
+      showToast('Se me cayó la línea con mi copia digital — te lo mando por WhatsApp y lo reviso yo.');
       sendAnswerToWhatsApp(ans);
     }
   } else {
     sendAnswerToWhatsApp(ans);
-    showToast('Modo automático: tu respuesta quedó precargada en WhatsApp. Con un endpoint de IA (CONFIG.aiEndpoint) esto se responde solo.');
+    showToast('Te lo mandé por WhatsApp; lo reviso personalmente entre sesiones.');
   }
 });
+
+/* escritura progresiva: el texto aparece como si alguien lo escribiera ahora */
+function typeOut(el, text){
+  el.textContent = '';
+  let i = 0;
+  const step = Math.max(2, Math.round(text.length / 200));
+  const t = setInterval(() => {
+    i = Math.min(text.length, i + step);
+    el.textContent = text.slice(0, i);
+    if (i >= text.length) clearInterval(t);
+  }, 22);
+}
 
 function sendAnswerToWhatsApp(ans){
   const active = document.querySelector('.tab-panel.active h3');
