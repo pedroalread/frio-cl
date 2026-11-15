@@ -882,16 +882,16 @@ if (mentorImg && mentorWrap) {
    Recomienda un programa según el resultado.
    ========================================================= */
 const QUIZ = [
-  { q:'¿Has trabajado en un equipo que use Scrum o Kanban?',
-    a:['Todavía no','Lo he visto de cerca','Sí, activamente'], w:[0,1,2] },
-  { q:'¿Qué es para ti una historia de usuario?',
-    a:['No lo sé bien','Una frase que va al backlog','Un compromiso verificable, con criterios de aceptación'], w:[0,1,2] },
-  { q:'El equipo promete 40 puntos con velocidad histórica de 18. ¿Qué haces?',
-    a:['Acepto y vemos qué pasa','Negocio el alcance con datos','Pido más tiempo de inmediato'], w:[0,2,1] },
-  { q:'¿Has facilitado planning, review o retrospectivas?',
-    a:['Nunca','Participé en varias','Las facilito con frecuencia'], w:[0,1,2] },
-  { q:'¿Qué buscas principalmente?',
-    a:['Entender de qué va todo esto','Trabajar como Product Owner','Metodología ágil para mi equipo o proyecto'], w:[0,1,1] },
+  { q:'El equipo termina todo el Sprint Backlog un día antes de cerrar el sprint. Como PO, tu mejor movida es:',
+    a:['Agregar más ítems al sprint: el tiempo no puede desperdiciarse','Revisar el Sprint Goal con el equipo: si ya se cumplió, que decidan cómo usar el día (mejora, preparación o deuda)','Cerrar el sprint anticipadamente y abrir uno nuevo'], w:[0,2,1] },
+  { q:'¿Cuál de estas historias está lista para entrar a un sprint (cumple Definition of Ready)?',
+    a:['"Como usuario quiero un reporte de ventas"','"Como ejecutivo quiero exportar ventas a CSV para revisarlas el lunes: columnas fecha/producto/monto; hasta 10.000 filas en menos de 5 segundos; estimada y con diseño acordado"','La más técnica posible, escrita por el desarrollador más senior'], w:[0,2,1] },
+  { q:'La velocidad del equipo cae de 30 a 22 puntos tras incorporar a dos personas nuevas. Tu conclusión como PO:',
+    a:['Las personas nuevas rinden menos: hay que exigir que la velocidad vuelva a 30','Es esperable (ramp-up de nuevos integrantes): re-planificar pronósticos con la capacidad real del equipo','Cambiar la estimación de puntos a horas-hombre para controlar mejor'], w:[0,2,1] },
+  { q:'A mitad de sprint, el negocio pide meter un ítem urgente del mismo tamaño que uno pendiente. Lo más sano:',
+    a:['Meterlo: es urgente y al final es lo mismo','Negociar un swap: sale un ítem equivalente del sprint y entra el urgente, protegiendo el compromiso','Decir que no: el sprint una vez comprometido no se toca'], w:[0,2,1] },
+  { q:'¿Para qué sirve principalmente el burndown chart?',
+    a:['Medir la productividad individual de cada desarrollador','Dar visibilidad del avance versus lo planeado, para decidir y corregir a tiempo','Reportar semanalmente el estado al comité directivo'], w:[0,2,1] },
 ];
 let qi = 0, qscore = 0;
 function renderQuiz(){
