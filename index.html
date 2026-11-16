@@ -229,7 +229,7 @@
   /* ================= V12: tema editorial claro (ref. stevenmengin.com) ================= */
   :root { --lime:#c80000; --ink:#ffffff; --smoke:#f2f2f2; --mist:#5c5c5c; --fg:#0d0d0d; --line:rgba(0,0,0,.14);
     --display:'Instrument Serif','Iowan Old Style','Palatino Linotype',Georgia,serif; --r:5px; }
-  body:has(.slide.active[data-name="Inicio"]) { --lime:#ff5a4a; --ink:#0b0b0b; --smoke:#171717; --mist:#b9b9b9; --fg:#f5f5f5; --line:rgba(255,255,255,.16); }
+  body:has(.slide.dark.active) { --lime:#ff5a4a; --ink:#0b0b0b; --smoke:#171717; --mist:#b9b9b9; --fg:#f5f5f5; --line:rgba(255,255,255,.16); }
   body { color:var(--fg); }
   #grain, #cursor { display:none !important; }
   ::selection { background:var(--fg); color:var(--ink); }
@@ -243,7 +243,7 @@
   [style*="color:#fff"] { color:var(--fg) !important; }
   [style*="rgba(255,255,255"] { border-color:var(--line) !important; }
   #header { background:rgba(255,255,255,.86); border-bottom:1px solid var(--line); }
-  body:has(.slide.active[data-name="Inicio"]) #header { background:rgba(11,11,11,.35); }
+  body:has(.slide.dark.active) #header { background:rgba(11,11,11,.35); }
   .hnav { color:var(--fg); }
   .hnav button:hover, .hnav button.on { color:var(--lime); }
   .btn-lime, .btn-solid { background:var(--fg); color:var(--ink); border-radius:var(--r); font-weight:500; }
@@ -265,6 +265,17 @@
   .ticker-track span::after { content:'/'; margin-left:3rem; color:var(--lime); font-style:normal; }
   .hero-glow { display:none; }
   .slide[data-name="Inicio"] { background:radial-gradient(ellipse 90% 70% at 50% 88%, #7d7d7d 0, #2a2a2a 38%, #0b0b0b 72%); }
+  .slide.dark { color:var(--fg); }
+  .slide[data-name="Mentor"] { background:radial-gradient(ellipse 80% 70% at 12% 100%, #5a5a5a 0, #1d1d1d 45%, #0b0b0b 75%); }
+  .slide[data-name="Entrevistas"] { background:radial-gradient(ellipse 85% 60% at 88% 0%, #5e5e5e 0, #1d1d1d 42%, #0b0b0b 74%); }
+  .slide[data-name="Cierre"] { background:radial-gradient(ellipse 90% 70% at 50% 100%, #7d7d7d 0, #2a2a2a 38%, #0b0b0b 72%); }
+  .slide:not(.dark)::before { content:''; position:absolute; left:0; right:0; bottom:0; height:34%; background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 520' preserveAspectRatio='none'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23d9d9d9'/%3E%3Cstop offset='1' stop-color='%23f7f7f7'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23bdbdbd'/%3E%3Cstop offset='1' stop-color='%23ececec'/%3E%3C/linearGradient%3E%3ClinearGradient id='c' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23888'/%3E%3Cstop offset='1' stop-color='%23cfcfcf'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath fill='url(%23a)' d='M0 260 C180 170 330 230 520 190 S900 90 1100 170 S1340 210 1440 150 V520 H0Z'/%3E%3Cpath fill='url(%23b)' d='M0 340 C220 270 380 360 600 300 S960 230 1160 300 S1360 330 1440 290 V520 H0Z'/%3E%3Cpath fill='url(%23c)' d='M0 430 C260 390 420 450 700 410 S1100 360 1300 410 S1400 420 1440 400 V520 H0Z'/%3E%3C/svg%3E") bottom/100% 100% no-repeat; opacity:.5; pointer-events:none; z-index:0; }
+  .slide:nth-child(even):not(.dark)::before { transform:scaleX(-1); height:30%; }
+  .slide:nth-child(3n):not(.dark)::before { height:38%; opacity:.4; }
+  .swrap { position:relative; z-index:1; }
+  .slide:not(.dark) .card, .slide:not(.dark) .panel-box { background:rgba(242,242,242,.86); backdrop-filter:blur(6px); }
+  .slide:not(.dark) .mlinks button { background:#fff; }
+
   .slide[data-name="Inicio"] .swrap { align-items:center; text-align:center; }
   .slide[data-name="Inicio"] .swrap > div { justify-content:center !important; }
   .slide[data-name="Inicio"] p { margin-left:auto; margin-right:auto; }
@@ -348,7 +359,7 @@
 <main id="deck">
 
   <!-- PANTALLA 1 · HERO -->
-  <section class="slide" data-name="Inicio">
+  <section class="slide dark" data-name="Inicio">
     <div class="hero-glow"></div>
     <div class="swrap">
       <p class="eyebrow anim d1">Formación práctica · Product Owner &amp; Agile</p>
@@ -514,7 +525,7 @@
     </div>
   </section>
 
-  <section class="slide" data-name="Mentor">
+  <section class="slide dark" data-name="Mentor">
     <div class="swrap">
       <div class="mentor-grid">
         <div class="mentor-wrap anim d2" data-hover>
@@ -602,7 +613,7 @@
   <!-- PANTALLA 6 · CIERRE -->
   
   <!-- PANTALLA · ENTREVISTAS (oferta para quien ya postula) -->
-  <section class="slide" data-name="Entrevistas">
+  <section class="slide dark" data-name="Entrevistas">
     <div class="swrap">
       <p class="eyebrow anim d1">Para quien ya está postulando</p>
       <h2 class="h-title anim d2" style="font-size:clamp(2rem,5vw,3.9rem);margin:.6rem 0 1rem">Ensaya la entrevista<br><span class="stroke-white">antes de la real.</span></h2>
@@ -679,7 +690,7 @@
     </div>
   </section>
 
-  <section class="slide" data-name="Cierre">
+  <section class="slide dark" data-name="Cierre">
     <div class="hero-glow" style="left:-15%;right:auto;top:auto;bottom:-25%"></div>
     <div class="swrap" style="text-align:center;align-items:center">
       <h2 class="cta-title h-title anim d2">Tu camino a PO<br><span class="stroke-text">empieza hoy.</span></h2>
