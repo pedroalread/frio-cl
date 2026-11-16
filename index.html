@@ -4,19 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Aprende a ser Product Owner — Formación práctica en metodologías ágiles</title>
+<meta name="theme-color" content="#0a0a0a">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<meta property="og:title" content="Aprende a ser Product Owner — Frio.cl">
+<meta property="og:description" content="Mentoría práctica 1:1 en vivo para Product Owners y metodologías ágiles. Casos reales, feedback con rúbrica, sesiones grabadas.">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0a'/%3E%3Ctext x='32' y='45' font-size='40' text-anchor='middle' font-family='Impact,Arial Narrow,sans-serif' fill='%23c8ff2e'%3EF%3C/text%3E%3C/svg%3E">
 <meta name="description" content="Formación práctica en metodologías ágiles para personas que quieren trabajar como Product Owner. Casos reales, feedback concreto, cero teoría inflada.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js');</script>
 <style>
-  :root { --lime:#c8ff2e; --ink:#0a0a0a; --smoke:#141414; --mist:#a3a3a3; }
+  :root { --lime:#c8ff2e; --ink:#0a0a0a; --smoke:#141414; --mist:#a3a3a3; --display:'Anton','Impact','Haettenschweiler','Arial Narrow Bold',sans-serif; --text:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif; }
   * { margin:0; padding:0; box-sizing:border-box; }
   html, body { height:100%; background:var(--ink); }
-  body { font-family:'Archivo',sans-serif; color:#f5f5f5; overflow:hidden; }
+  body { font-family:var(--text); color:#f5f5f5; overflow:hidden; }
   a { color:inherit; text-decoration:none; }
   button { font-family:inherit; cursor:pointer; }
   ::selection { background:var(--lime); color:var(--ink); }
-  .font-display { font-family:'Anton',sans-serif; letter-spacing:.01em; }
+  .font-display { font-family:var(--display); letter-spacing:.01em; }
   .stroke-text { -webkit-text-stroke:1.5px var(--lime); color:transparent; }
   .stroke-white { -webkit-text-stroke:1px rgba(255,255,255,.35); color:transparent; }
 
@@ -55,7 +62,7 @@
   .slide.active { opacity:1; visibility:visible; transform:none; transition:opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1); z-index:2; }
   .slide.below { transform:translateY(6vh) scale(.985); }
   .slide.above { transform:translateY(-6vh) scale(.985); }
-  .swrap { min-height:100%; max-width:1400px; margin:0 auto; padding:120px 2rem 90px; display:flex; flex-direction:column; justify-content:center; }
+  .swrap { min-height:100%; max-width:1400px; margin:0 auto; padding:112px 4rem 110px; display:flex; flex-direction:column; justify-content:center; }
 
   /* animaciones escalonadas dentro de cada pantalla */
   .anim { opacity:0; transform:translateY(34px); }
@@ -65,13 +72,13 @@
   .slide.active .d5 { animation-delay:.58s } .slide.active .d6 { animation-delay:.7s }
   @keyframes rise { to { opacity:1; transform:none; } }
   .eyebrow { color:var(--lime); font-size:.72rem; letter-spacing:.35em; text-transform:uppercase; }
-  .h-title { font-family:'Anton',sans-serif; text-transform:uppercase; line-height:.95; }
+  .h-title { font-family:var(--display); text-transform:uppercase; line-height:.95; }
 
   /* ---------- hero ---------- */
-  .hero-title { font-size:clamp(3.2rem, 11vw, 10rem); }
+  .hero-title { font-size:clamp(2.8rem, min(11vw, 17vh), 9rem); }
   .hero-glow { position:absolute; top:-20%; right:-10%; width:60vw; height:60vw; border-radius:50%; background:radial-gradient(circle, rgba(200,255,46,.12), transparent 65%); pointer-events:none; }
   .ticker { position:absolute; bottom:0; left:0; right:0; overflow:hidden; border-top:1px solid rgba(255,255,255,.08); padding:.9rem 0; background:rgba(10,10,10,.5); }
-  .ticker-track { display:flex; gap:3rem; white-space:nowrap; font-family:'Anton',sans-serif; text-transform:uppercase; font-size:1rem; color:var(--mist); animation:tick 30s linear infinite; width:max-content; }
+  .ticker-track { display:flex; gap:3rem; white-space:nowrap; font-family:var(--display); text-transform:uppercase; font-size:1rem; color:var(--mist); animation:tick 30s linear infinite; width:max-content; }
   .ticker-track span b { color:var(--lime); font-weight:400; }
   @keyframes tick { to { transform:translateX(-50%); } }
 
@@ -79,11 +86,11 @@
   .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1.25rem; }
   .card { background:var(--smoke); border:1px solid rgba(255,255,255,.09); border-radius:1.5rem; padding:2rem; transition:transform .4s cubic-bezier(.22,1,.36,1), border-color .4s, box-shadow .4s; }
   .card:hover { transform:translateY(-8px); border-color:var(--lime); box-shadow:0 24px 60px -18px rgba(200,255,46,.2); }
-  .card .num { font-family:'Anton',sans-serif; color:var(--lime); font-size:3rem; }
-  .card h3 { font-family:'Anton',sans-serif; text-transform:uppercase; font-size:1.4rem; margin:.75rem 0 .5rem; }
+  .card .num { font-family:var(--display); color:var(--lime); font-size:3rem; }
+  .card h3 { font-family:var(--display); text-transform:uppercase; font-size:1.4rem; margin:.75rem 0 .5rem; }
   .card p { color:var(--mist); font-size:.9rem; line-height:1.6; }
-  .price { font-family:'Anton',sans-serif; color:var(--lime); font-size:2.8rem; margin:.5rem 0 1rem; }
-  .price small { font-family:'Archivo',sans-serif; font-size:.9rem; color:var(--mist); }
+  .price { font-family:var(--display); color:var(--lime); font-size:2.8rem; margin:.5rem 0 1rem; }
+  .price small { font-family:var(--text); font-size:.9rem; color:var(--mist); }
   .card ul { list-style:none; margin:0 0 1.5rem; }
   .card li { color:var(--mist); font-size:.88rem; padding:.35rem 0; display:flex; gap:.6rem; }
   .card li::before { content:'✦'; color:var(--lime); }
@@ -97,13 +104,13 @@
 
   /* ---------- casos ---------- */
   .tabbar { display:flex; flex-wrap:wrap; gap:.6rem; margin:1.5rem 0; }
-  .tab-btn { font-family:'Anton',sans-serif; text-transform:uppercase; letter-spacing:.05em; font-size:.85rem; padding:.7rem 1.4rem; border-radius:9999px; border:1px solid rgba(255,255,255,.15); background:transparent; color:#f5f5f5; transition:all .3s; }
+  .tab-btn { font-family:var(--display); text-transform:uppercase; letter-spacing:.05em; font-size:.85rem; padding:.7rem 1.4rem; border-radius:9999px; border:1px solid rgba(255,255,255,.15); background:transparent; color:#f5f5f5; transition:all .3s; }
   .tab-btn.active { background:var(--lime); color:var(--ink); border-color:var(--lime); }
   .panel-box { background:var(--smoke); border:1px solid rgba(255,255,255,.1); border-radius:1.5rem; padding:2rem; }
   .tab-panel { display:none; }
   .tab-panel.active { display:block; animation:panelIn .5s cubic-bezier(.22,1,.36,1); }
   @keyframes panelIn { from { opacity:0; transform:translateX(28px);} to { opacity:1; transform:none;} }
-  .tab-panel h3 { font-family:'Anton',sans-serif; text-transform:uppercase; font-size:clamp(1.4rem,2.6vw,2.2rem); margin:.5rem 0 1rem; }
+  .tab-panel h3 { font-family:var(--display); text-transform:uppercase; font-size:clamp(1.4rem,2.6vw,2.2rem); margin:.5rem 0 1rem; }
   .tab-panel p.case { color:var(--mist); line-height:1.65; max-width:60ch; }
   .qrow { display:flex; justify-content:space-between; align-items:baseline; margin:1.5rem 0 .5rem; font-size:.85rem; color:var(--mist); }
   #wordCount.ok { color:var(--lime); }
@@ -112,7 +119,7 @@
   .senior-btn { display:inline-flex; align-items:center; gap:.5rem; margin-top:1rem; color:var(--lime); font-weight:600; border:1px solid rgba(200,255,46,.4); background:transparent; border-radius:9999px; padding:.75rem 1.5rem; transition:all .3s; }
   .senior-btn:hover { background:var(--lime); color:var(--ink); }
   .senior-answer { max-height:0; overflow:hidden; transition:max-height .6s cubic-bezier(.22,1,.36,1); }
-  .senior-answer.open { max-height:400px; }
+  .senior-answer.open { max-height:600px; }
   .senior-box { margin-top:1rem; background:var(--ink); border-left:4px solid var(--lime); border-radius:0 1rem 1rem 0; padding:1.25rem; color:var(--mist); font-size:.92rem; line-height:1.6; }
 
   /* ---------- mentor ---------- */
@@ -134,8 +141,8 @@
   .dot { width:10px; height:10px; border-radius:9999px; border:1.5px solid rgba(255,255,255,.4); background:transparent; padding:0; position:relative; transition:all .35s; }
   .dot.on { background:var(--lime); border-color:var(--lime); transform:scale(1.35); }
   .dot .lbl { position:absolute; right:22px; top:50%; transform:translateY(-50%) translateX(6px); font-size:.68rem; letter-spacing:.15em; text-transform:uppercase; color:var(--lime); opacity:0; transition:all .3s; white-space:nowrap; pointer-events:none; }
-  .dot:hover .lbl, .dot.on .lbl { opacity:1; transform:translateY(-50%) translateX(0); }
-  #counter { position:fixed; left:1.6rem; bottom:4.4rem; z-index:60; font-family:'Anton',sans-serif; font-size:.95rem; color:var(--mist); letter-spacing:.1em; }
+  .dot:hover .lbl, .dot:focus-visible .lbl { opacity:1; transform:translateY(-50%) translateX(0); }
+  #counter { position:fixed; left:1.6rem; bottom:4.4rem; z-index:60; font-family:var(--display); font-size:.95rem; color:var(--mist); letter-spacing:.1em; }
   #counter b { color:var(--lime); font-weight:400; }
   #hint { position:fixed; left:50%; bottom:4.4rem; transform:translateX(-50%); z-index:60; font-size:.68rem; letter-spacing:.3em; text-transform:uppercase; color:var(--mist); animation:bob 2.2s ease-in-out infinite; }
   @keyframes bob { 0%,100%{transform:translate(-50%,0)} 50%{transform:translate(-50%,7px)} }
@@ -163,17 +170,60 @@
   .btnrow { display:flex; gap:.8rem; }
   .btnrow .btn-full, .btnrow .btn-solid { width:auto; flex:1; }
 
+  /* ---------- V11: componentes nuevos ---------- */
+  :focus-visible { outline:2px solid var(--lime); outline-offset:3px; }
+  #fade { position:fixed; left:0; right:0; bottom:0; height:88px; background:linear-gradient(to top, var(--ink) 30%, transparent); z-index:55; pointer-events:none; }
+  .two-col { display:grid; grid-template-columns:1.05fr .95fr; gap:2.5rem; align-items:start; }
+  .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+  .grid5 { display:grid; grid-template-columns:repeat(auto-fit,minmax(215px,1fr)); gap:1rem; }
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:1.1rem; }
+  .steps .card { padding:1.4rem 1.6rem; } .steps .num { font-size:2.3rem; } .steps .card h3 { margin:.4rem 0 .4rem; }
+  .proof { display:flex; flex-wrap:wrap; gap:.5rem 1.6rem; margin-top:1.8rem; font-size:.78rem; color:var(--mist); letter-spacing:.02em; }
+  .proof span::before { content:'✦'; color:var(--lime); margin-right:.5rem; }
+  .iv-foot { display:flex; flex-wrap:wrap; gap:1.6rem 3rem; align-items:center; margin-top:1.6rem; border-top:1px solid rgba(255,255,255,.08); padding-top:1.5rem; }
+  .iv-foot ul { list-style:none; display:grid; gap:.45rem; color:var(--mist); font-size:.9rem; flex:1; min-width:240px; }
+  .iv-foot li::before { content:'✦'; color:var(--lime); margin-right:.6rem; }
+  .menu-btn { display:none; align-items:center; justify-content:center; width:44px; height:44px; border-radius:9999px; border:1px solid rgba(255,255,255,.2); background:transparent; color:#f5f5f5; font-size:1.2rem; }
+  .hright { display:flex; align-items:center; gap:.6rem; }
+  .mlinks { display:grid; gap:.5rem; margin-top:1rem; }
+  .mlinks button { text-align:left; background:var(--ink); border:1px solid rgba(255,255,255,.1); border-radius:1rem; color:#f5f5f5; font-weight:600; font-size:1rem; padding:.95rem 1.2rem; display:flex; justify-content:space-between; }
+  .mlinks button.on { border-color:var(--lime); color:var(--lime); }
+  .mlinks button::after { content:'→'; color:var(--lime); }
+
   /* ---------- responsive ---------- */
-  @media(max-width:900px){
+  @media(max-width:1180px){
     .hnav { display:none; }
+    .menu-btn { display:inline-flex; }
+  }
+  @media(max-width:1000px){
+    .grid3 { grid-template-columns:repeat(2,1fr); }
+  }
+  @media(max-width:900px){
     .cards { grid-template-columns:1fr; gap:1rem; }
     .card { padding:1.5rem; }
+    .card:hover { transform:none; }
     .mentor-grid { grid-template-columns:1fr; gap:1.5rem; }
     .mentor-photo { height:260px; }
-    #dots { right:.9rem; }
-    .swrap { padding:100px 1.25rem 80px; }
-    #hint { display:none; }
+    .swrap { padding:92px 1.25rem 96px; }
+    .hwrap { padding:0 1.1rem; height:64px; }
+    #hint, #counter { display:none; }
+    #dots { right:auto; left:50%; top:auto; bottom:1.05rem; transform:translateX(-50%); flex-direction:row; gap:.6rem; }
+    .dot .lbl { display:none; }
     .hero-title { font-size:clamp(2.6rem,14vw,4.5rem); }
+    .two-col, .steps { grid-template-columns:1fr; gap:1.6rem; }
+    .panel-box { padding:1.3rem; }
+    .tab-btn { font-size:.78rem; padding:.6rem 1.1rem; }
+    .btn-lime, .btn-ghost, .btn-solid, .btn-full, .senior-btn { min-height:44px; }
+    #toast { bottom:3.2rem; }
+  }
+  @media(max-width:640px){
+    .grid3 { grid-template-columns:1fr; }
+    .obox { padding:1.5rem; }
+  }
+  @media(prefers-reduced-motion:reduce){
+    .anim { opacity:1; transform:none; animation:none !important; }
+    .ticker-track, #hint { animation:none; }
+    .slide, .slide.active { transition:none; }
   }
 </style>
 </head>
@@ -193,21 +243,37 @@
 <!-- ===================== HEADER ===================== -->
 <header id="header">
   <div class="hwrap">
-    <a href="#" onclick="goTo(0);return false" class="font-display" style="font-size:1.5rem" data-hover>FRIO<span style="color:var(--lime)">.</span>CL</a>
-    <nav class="hnav">
-      <button onclick="goTo(1)" data-nav="1" data-hover>Aprendizaje</button>
-      <button onclick="goTo(2)" data-nav="2" data-hover>Metodología</button>
-      <button onclick="goTo(3)" data-nav="3" data-hover>Ecosistema</button>
-      <button onclick="goTo(4)" data-nav="4" data-hover>Práctica</button>
-      <button onclick="goTo(5)" data-nav="5" data-hover>Tu nivel</button>
-      <button onclick="goTo(6)" data-nav="6" data-hover>Mentor</button>
-      <button onclick="goTo(7)" data-nav="7" data-hover>Programas</button>
+    <a href="#inicio" onclick="goToName('Inicio');return false" class="font-display" aria-label="Frio.cl, ir al inicio" style="font-size:1.5rem" data-hover>FRIO<span style="color:var(--lime)">.</span>CL</a>
+    <nav class="hnav" aria-label="Secciones">
+      <button onclick="goToName('Aprendizaje')" data-go="Aprendizaje" data-hover>Aprendizaje</button>
+      <button onclick="goToName('Metodología')" data-go="Metodología" data-hover>Metodología</button>
+      <button onclick="goToName('Ecosistema')" data-go="Ecosistema" data-hover>Ecosistema</button>
+      <button onclick="goToName('Práctica')" data-go="Práctica" data-hover>Práctica</button>
+      <button onclick="goToName('Tu nivel')" data-go="Tu nivel" data-hover>Tu nivel</button>
+      <button onclick="goToName('Mentor')" data-go="Mentor" data-hover>Mentor</button>
+      <button onclick="goToName('Programas')" data-go="Programas" data-hover>Programas</button>
+      <button onclick="goToName('Entrevistas')" data-go="Entrevistas" data-hover>Entrevistas</button>
       <button onclick="openContact()" data-hover>Contacto</button>
       <button onclick="openOverlay('faqOverlay')" data-hover>FAQ</button>
     </nav>
-    <button class="btn-lime" onclick="openOverlay('freeOverlay')" data-hover>Caso gratis ↓</button>
+    <div class="hright">
+      <button class="btn-lime" onclick="openOverlay('freeOverlay')" data-hover>Caso gratis ↓</button>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-haspopup="dialog" onclick="openOverlay('menuOverlay')">☰</button>
+    </div>
   </div>
 </header>
+<div id="fade"></div>
+
+<!-- MENÚ MÓVIL -->
+<div class="overlay" id="menuOverlay" role="dialog" aria-label="Menú">
+  <div class="overlay-wrap">
+    <button class="x-btn" onclick="closeOverlay('menuOverlay')" aria-label="Cerrar menú" data-hover>×</button>
+    <div class="obox" style="max-width:460px">
+      <p class="eyebrow" style="margin-bottom:.4rem">Menú</p>
+      <div class="mlinks" id="mlinks"></div>
+    </div>
+  </div>
+</div>
 
 <!-- ===================== DECK ===================== -->
 <main id="deck">
@@ -226,9 +292,10 @@
         <p class="anim d5" style="color:var(--mist);max-width:46ch;line-height:1.7;font-size:1.05rem">Formación práctica en metodologías ágiles para personas que quieren trabajar como Product Owner. Casos reales, feedback concreto, cero teoría inflada.</p>
         <div class="anim d6" style="display:flex;gap:1rem;flex-wrap:wrap">
           <button class="btn-lime" style="font-size:1rem;padding:1.05rem 2.2rem" onclick="openOverlay('freeOverlay')" data-hover>Quiero el caso gratis</button>
-          <button class="btn-ghost" onclick="goTo(1)" data-hover>Ver el método ↓</button>
+          <button class="btn-ghost" onclick="goToName('Aprendizaje')" data-hover>Ver el método ↓</button>
         </div>
       </div>
+      <div class="proof anim d6"><span>11+ años como PO en banca y fintech</span><span>Sesiones 1:1 en vivo</span><span>Todo queda grabado</span></div>
     </div>
     <div class="ticker anim d6">
       <div class="ticker-track">
@@ -277,7 +344,7 @@
     <div class="swrap">
       <p class="eyebrow anim d1">Metodología en detalle</p>
       <h2 class="h-title anim d2" style="font-size:clamp(2rem,4.5vw,3.6rem);margin:.6rem 0 1.8rem">Cómo te enseño, <span class="stroke-white">paso a paso</span></h2>
-      <div style="display:grid;grid-template-columns:1.05fr .95fr;gap:2.5rem;align-items:start">
+      <div class="two-col">
         <div>
           <p class="anim d3" style="color:var(--lime);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:1rem">El ciclo de cada sesión</p>
           <div class="anim d3" style="border-left:1px solid rgba(255,255,255,.12);padding-left:1.4rem;display:grid;gap:1.1rem">
@@ -290,10 +357,10 @@
         <div>
           <p class="anim d4" style="color:var(--lime);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:1rem">La rúbrica con que evalúo</p>
           <div class="anim d4" style="display:grid;gap:.8rem">
-            <div style="background:var(--smoke);border:1px solid rgba(255,255,255,.09);border-radius:1rem;padding:1rem 1.2rem"><div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font-size:.95rem">Criterio de negocio</b><span style="color:var(--lime);font-family:'Anton',sans-serif">30%</span></div><p style="color:var(--mist);font-size:.84rem;margin-top:.3rem;line-height:1.5">¿Tu decisión genera valor medible o solo actividad?</p></div>
-            <div style="background:var(--smoke);border:1px solid rgba(255,255,255,.09);border-radius:1rem;padding:1rem 1.2rem"><div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font-size:.95rem">Estructura</b><span style="color:var(--lime);font-family:'Anton',sans-serif">25%</span></div><p style="color:var(--mist);font-size:.84rem;margin-top:.3rem;line-height:1.5">¿Partes por el problema y los datos antes de opinar?</p></div>
-            <div style="background:var(--smoke);border:1px solid rgba(255,255,255,.09);border-radius:1rem;padding:1rem 1.2rem"><div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font-size:.95rem">Stakeholders</b><span style="color:var(--lime);font-family:'Anton',sans-serif">25%</span></div><p style="color:var(--mist);font-size:.84rem;margin-top:.3rem;line-height:1.5">¿Negocias sin quemar puentes ni decir sí a todo?</p></div>
-            <div style="background:var(--smoke);border:1px solid rgba(255,255,255,.09);border-radius:1rem;padding:1rem 1.2rem"><div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font-size:.95rem">Ejecución ágil</b><span style="color:var(--lime);font-family:'Anton',sans-serif">20%</span></div><p style="color:var(--mist);font-size:.84rem;margin-top:.3rem;line-height:1.5">¿Tu solución cabe en un sprint con la velocidad real del equipo?</p></div>
+            <div style="background:var(--smoke);border:1px solid rgba(255,255,255,.09);border-radius:1rem;padding:1rem 1.2rem"><div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font-size:.95rem">Criterio de negocio</b><span style="color:var(--lime);font-family:var(--display)">30%</span></div><p style="color:var(--mist);font-size:.84rem;margin-top:.3rem;line-height:1.5">¿Tu decisión genera valor medible o solo actividad?</p></div>
+            <div style="background:var(--smoke);border:1px solid rgba(255,255,255,.09);border-radius:1rem;padding:1rem 1.2rem"><div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font-size:.95rem">Estructura</b><span style="color:var(--lime);font-family:var(--display)">25%</span></div><p style="color:var(--mist);font-size:.84rem;margin-top:.3rem;line-height:1.5">¿Partes por el problema y los datos antes de opinar?</p></div>
+            <div style="background:var(--smoke);border:1px solid rgba(255,255,255,.09);border-radius:1rem;padding:1rem 1.2rem"><div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font-size:.95rem">Stakeholders</b><span style="color:var(--lime);font-family:var(--display)">25%</span></div><p style="color:var(--mist);font-size:.84rem;margin-top:.3rem;line-height:1.5">¿Negocias sin quemar puentes ni decir sí a todo?</p></div>
+            <div style="background:var(--smoke);border:1px solid rgba(255,255,255,.09);border-radius:1rem;padding:1rem 1.2rem"><div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font-size:.95rem">Ejecución ágil</b><span style="color:var(--lime);font-family:var(--display)">20%</span></div><p style="color:var(--mist);font-size:.84rem;margin-top:.3rem;line-height:1.5">¿Tu solución cabe en un sprint con la velocidad real del equipo?</p></div>
           </div>
         </div>
       </div>
@@ -313,10 +380,10 @@
       <p class="eyebrow anim d1">M&aacute;s all&aacute; del rol PO</p>
       <h2 class="h-title anim d2" style="font-size:clamp(2rem,5vw,3.8rem);margin:.6rem 0 .6rem">El ecosistema &aacute;gil, <span class="stroke-white">completo.</span></h2>
       <p class="anim d3" style="color:var(--mist);max-width:72ch;line-height:1.65;margin-bottom:1.6rem">El fuerte es Product Owner. Pero si tu equipo o tu carrera necesita el tablero completo, tambi&eacute;n ense&ntilde;amos todo lo que lo rodea &mdash; siempre aplicado con casos, nunca de memoria.</p>
-      <div class="anim d4" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1rem">
+      <div class="anim d4 grid3">
         <div class="card" data-hover><h3 style="font-size:1.1rem">Scrum completo</h3><p>Roles: PO, Scrum Master y Developers. Eventos: planning, daily, review, retro. Artefactos: product backlog, sprint backlog e incremento. C&oacute;mo encajan en un d&iacute;a real, no en un diagrama.</p></div>
         <div class="card" data-hover><h3 style="font-size:1.1rem">Kanban y flujo</h3><p>L&iacute;mites WIP, pull vs. push, tableros que no mienten. M&eacute;tricas de flujo: lead time, cycle time y Cumulative Flow.</p></div>
-        <div class="card" data-hover><h3 style="font-size:1.1rem">Pr&aacute;cticas t&eacute;cnicas</h3><p>Qu&eacute; son y para qu&eacute; sirven CI, TDD, pair programming y refactoring &mdash; el vocabulario m&iacute;nimo para conversar con desarrollo sin papado.</p></div>
+        <div class="card" data-hover><h3 style="font-size:1.1rem">Pr&aacute;cticas t&eacute;cnicas</h3><p>Qu&eacute; son y para qu&eacute; sirven CI, TDD, pair programming y refactoring &mdash; el vocabulario m&iacute;nimo para conversar con desarrollo sin quedar perdido.</p></div>
         <div class="card" data-hover><h3 style="font-size:1.1rem">M&eacute;tricas que importan</h3><p>Velocity, burndown y CFD: cu&aacute;les leer, cu&aacute;les ignorar y por qu&eacute; medir productividad individual destruye equipos.</p></div>
         <div class="card" data-hover><h3 style="font-size:1.1rem">Los otros roles</h3><p>Scrum Master, agile coach, liderazgo: qu&eacute; hace cada uno, qu&eacute; NO hace, y c&oacute;mo no pisarse entre s&iacute;.</p></div>
         <div class="card" data-hover><h3 style="font-size:1.1rem">Facilitaci&oacute;n</h3><p>C&oacute;mo facilitar ceremonias que producen decisiones y no teatro: din&aacute;micas de retro, planning efectivo y daily de 15 minutos reales.</p></div>
@@ -465,13 +532,61 @@
 
   <!-- PANTALLA 6 · CIERRE -->
   
+  <!-- PANTALLA · ENTREVISTAS (oferta para quien ya postula) -->
+  <section class="slide" data-name="Entrevistas">
+    <div class="swrap">
+      <p class="eyebrow anim d1">Para quien ya está postulando</p>
+      <h2 class="h-title anim d2" style="font-size:clamp(2rem,5vw,3.9rem);margin:.6rem 0 1rem">Ensaya la entrevista<br><span class="stroke-white">antes de la real.</span></h2>
+      <p class="anim d3" style="color:var(--mist);max-width:66ch;line-height:1.65;margin-bottom:1.8rem">Simulación 1:1 de entrevista para <b style="color:#fff">Product Owner y Product Manager</b> en banca, pagos y fintech. Preguntas como las que te ponen en la mesa, evaluadas con rúbrica y sin generalidades.</p>
+      <div class="steps anim d4">
+        <div class="card" data-hover><div class="num">01</div><h3>Entrevista simulada</h3><p>40 minutos con preguntas de producto: priorizar con el negocio presionando, comprometer fechas con datos, manejar stakeholders difíciles. Contexto de banca, medios de pago y fintech.</p></div>
+        <div class="card" data-hover><div class="num">02</div><h3>Feedback con rúbrica</h3><p>15 minutos, decisión por decisión, con una rúbrica de 4 criterios con peso (más abajo). Sin generalidades.</p></div>
+        <div class="card" data-hover><div class="num">03</div><h3>Plan y grabación</h3><p>5 minutos para cerrar tus 2 o 3 focos de mejora. Recibes la sesión grabada y un plan de una página para ensayar antes de tu entrevista.</p></div>
+      </div>
+      <div class="anim d4" style="margin-top:1.6rem">
+        <p style="color:var(--lime);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:.9rem">La rúbrica de la simulación</p>
+        <div class="grid5" style="grid-template-columns:repeat(auto-fit,minmax(230px,1fr))">
+          <div class="card" style="padding:1.1rem 1.3rem"><div style="display:flex;justify-content:space-between;align-items:baseline"><b>Criterio de negocio</b><span style="color:var(--lime);font-family:var(--display)">30%</span></div><p style="margin-top:.35rem;font-size:.84rem">¿Cuantificas margen vs. riesgo antes de actuar y segmentas el problema?</p></div>
+          <div class="card" style="padding:1.1rem 1.3rem"><div style="display:flex;justify-content:space-between;align-items:baseline"><b>Banca y pagos</b><span style="color:var(--lime);font-family:var(--display)">25%</span></div><p style="margin-top:.35rem;font-size:.84rem">¿Entiendes autorización, liquidación, reversas y casos borde como timeouts y duplicidades?</p></div>
+          <div class="card" style="padding:1.1rem 1.3rem"><div style="display:flex;justify-content:space-between;align-items:baseline"><b>Riesgo y stakeholders</b><span style="color:var(--lime);font-family:var(--display)">25%</span></div><p style="margin-top:.35rem;font-size:.84rem">¿Negocias con Riesgo, Legal y terceros con controles compensatorios, sin proponer apagarlos?</p></div>
+          <div class="card" style="padding:1.1rem 1.3rem"><div style="display:flex;justify-content:space-between;align-items:baseline"><b>Prioridad y métricas</b><span style="color:var(--lime);font-family:var(--display)">20%</span></div><p style="margin-top:.35rem;font-size:.84rem">¿Anclas las métricas en negocio activado y secuencias las entregas con contingencia?</p></div>
+        </div>
+        <p style="color:var(--mist);font-size:.78rem;margin-top:.8rem;line-height:1.5">Regla de veto: proponer eliminar controles legales o de riesgo deja tu nota global topada en 2,5 de 5.</p>
+      </div>
+
+      <div class="panel-box anim d5" style="margin-top:1.6rem">
+        <p class="eyebrow" style="letter-spacing:.25em">Caso de muestra · pagos</p>
+        <h3 class="h-title" style="font-size:clamp(1.3rem,2.4vw,1.9rem);margin:.5rem 0 .8rem">La regla antifraude que baja las ventas</h3>
+        <p style="color:var(--mist);line-height:1.65;max-width:70ch">Eres PO del checkout de una pasarela que procesa $1.200M CLP al día con un margen neto de 0,45%. Una regla antifraude nueva fuerza autenticación adicional y la aprobación cae de 84% a 76% en 48 horas: son $96M CLP/día menos procesados, unos $432.000 CLP/día de margen. Riesgo la defiende porque evita $310.000 CLP/día de fraude. Comercial exige revertirla hoy. ¿Qué haces en las próximas 24 horas?</p>
+        <p style="color:rgba(163,163,163,.7);font-size:.74rem;margin-top:.6rem">Cifras ilustrativas de un caso diseñado para practicar; no corresponden a ninguna empresa real.</p>
+        <button class="senior-btn" id="ivBtn" data-hover>Ver qué busca un senior <span id="ivIcon">↓</span></button>
+        <div class="senior-answer" id="ivAnswer">
+          <div class="senior-box"><b style="color:var(--lime);text-transform:uppercase;font-size:.72rem;letter-spacing:.12em;display:block;margin-bottom:.5rem">Enfoque senior</b>Cuantificar primero: la regla cuesta $432.000 al día en margen y ahorra $310.000 en fraude, una pérdida neta de $122.000 diarios. Después, segmentar los rechazos por BIN, monto y banco emisor para confirmar si el flag de riesgo gatilla los rechazos «do not honor», y correr una prueba acotada por score (reintento o enrutamiento en transacciones de bajo riesgo) en vez de apagar toda la regla. <b style="color:#fff">Errores típicos:</b> pedir apagarla sin cuantificar, confundir rechazo del motor propio con rechazo del emisor y escalar el conflicto sin datos segmentados.</div>
+        </div>
+      </div>
+
+      <div class="iv-foot anim d5">
+        <div>
+          <div class="price" style="margin:0">$40.000 <small>CLP · 60 min · 1:1 en vivo</small></div>
+          <button class="btn-lime" style="font-size:1rem;padding:1rem 2.2rem;margin-top:.8rem" onclick="buyPack('p5')" data-hover>Agendar simulación</button>
+        </div>
+        <ul>
+          <li>Si tienes entrevistas de PO/PM en banca, fintech o medios de pago</li>
+          <li>Si vienes de otra área y quieres ensayar antes de jugártela</li>
+          <li>Casos tipo: no compartas información confidencial de tu empleador</li>
+        </ul>
+      </div>
+      <p class="anim d6" style="color:var(--mist);font-size:.72rem;margin-top:1.4rem;max-width:70ch;line-height:1.6">No garantizamos empleo ni somos bolsa de trabajo: ensayas y recibes feedback honesto. Pago por transferencia bancaria.</p>
+    </div>
+  </section>
+
   <!-- PANTALLA 7 · COMPLEMENTA -->
   <section class="slide" data-name="Complementa">
     <div class="swrap">
       <p class="eyebrow anim d1">Ecosistema internacional</p>
       <h2 class="h-title anim d2" style="font-size:clamp(2rem,4.5vw,3.8rem);margin:.6rem 0 1rem">Certifícate allá.<br><span class="stroke-white">Aprende el oficio acá.</span></h2>
       <p class="anim d3" style="color:var(--mist);max-width:72ch;line-height:1.65;margin-bottom:1.8rem">Estas son las plataformas mejor valoradas del mundo para teoría, certificación y red profesional. <b style="color:#fff">Nos complementamos, no competimos:</b> ellos te dan el marco y el papel; yo te doy la práctica 1:1 en vivo, en español, con casos de la región.</p>
-      <div class="anim d4" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1rem">
+      <div class="anim d4 grid5">
         <div class="card" data-hover><h3 style="font-size:1.15rem">Scrum.org</h3><p>El estándar: certificación PSPO por examen (~US$200). Teoría sólida y reconocida.</p><p style="color:var(--lime);font-size:.8rem;margin-top:.6rem">→ Yo te preparo la práctica que el examen no mide.</p></div>
         <div class="card" data-hover><h3 style="font-size:1.15rem">Scrum Alliance</h3><p>CSPO en 2 días en vivo con trainers certificados y red global.</p><p style="color:var(--lime);font-size:.8rem;margin-top:.6rem">→ Después del taller, afianzas el rol con casos reales.</p></div>
         <div class="card" data-hover><h3 style="font-size:1.15rem">Product School</h3><p>La certificación de PM más conocida, 8 semanas con PMs de big tech.</p><p style="color:var(--lime);font-size:.8rem;margin-top:.6rem">→ Complemento en español y a precio estudiantil.</p></div>
@@ -501,7 +616,8 @@
       <h2 class="cta-title h-title anim d2">Tu camino a PO<br><span class="stroke-text">empieza hoy.</span></h2>
       <div class="anim d4" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem">
         <button class="btn-lime" style="font-size:1.05rem;padding:1.1rem 2.4rem" onclick="openOverlay('freeOverlay')" data-hover>Descargar caso gratis</button>
-        <button class="btn-ghost" onclick="goTo(4)" data-hover>Ver packs</button>
+        <button class="btn-ghost" onclick="goToName('Programas')" data-hover>Ver packs</button>
+        <button class="btn-ghost" onclick="goToName('Entrevistas')" data-hover>Simular mi entrevista</button>
       </div>
       <p class="fineprint anim d5" style="margin-left:auto;margin-right:auto">© 2026 Frio.cl — Formación práctica de Product Owner y metodologías ágiles. No somos bolsa de trabajo ni garantizamos empleo. Pagos por transferencia bancaria.</p>
     </div>
@@ -527,6 +643,8 @@
       <div class="faq-item"><button class="faq-q" data-hover>¿Me consiguen trabajo?<span class="faq-icon">+</span></button><div class="faq-a"><p>No. No somos bolsa de trabajo ni garantizamos empleo. Sí sales sabiendo trabajar como PO: artefactos reales, criterio y práctica deliberada. El empleo queda de tu lado.</p></div></div>
       <div class="faq-item"><button class="faq-q" data-hover>¿Sirve para certificarme (PSM, CSPO)?<span class="faq-icon">+</span></button><div class="faq-a"><p>Complementa, no reemplaza: la certificación valida teoría; esto te da práctica real. Si te interesa una certificación, te oriento sobre cuál conviene según tu situación.</p></div></div>
       <div class="faq-item"><button class="faq-q" data-hover>¿Cómo agendo y pago?<span class="faq-icon">+</span></button><div class="faq-a"><p>Completa el formulario de contacto de la página y te respondo personalmente por correo para coordinar agenda. El pago es por transferencia bancaria: envío los datos por el mismo medio y la sesión se confirma al acreditarse el comprobante.</p></div></div>
+      <div class="faq-item"><button class="faq-q" data-hover>¿Qué pasa con la grabación de mi simulación de entrevista?<span class="faq-icon">+</span></button><div class="faq-a"><p>Es solo para ti, para que repases. La elimino a los 30 días y no la comparto con nadie. Trabajamos con casos tipo, así que no necesitas compartir información confidencial de tu empleador; el tratamiento de datos sigue criterios de la Ley 21.719.</p></div></div>
+      <div class="faq-item"><button class="faq-q" data-hover>¿La simulación asegura que apruebe mi entrevista?<span class="faq-icon">+</span></button><div class="faq-a"><p>No. Ensayas con casos tipo de banca y fintech y recibes feedback honesto con rúbrica. El resultado de tu proceso depende de ti y de la empresa.</p></div></div>
       <div class="faq-item"><button class="faq-q" data-hover>¿Y si no puedo asistir a una sesión?<span class="faq-icon">+</span></button><div class="faq-a"><p>Con 24 horas de anticipación reagendamos sin costo. Las sesiones no avisadas se consideran realizadas.</p></div></div>
     </div>
   </div>
@@ -603,7 +721,8 @@ const CONFIG = {
     p1: { name:'Sesión de prueba',       price:'$40.000' },
     p2: { name:'Programa Base (3 sesiones)',  price:'$100.000' },
     p3: { name:'Programa Completo (6 sesiones)', price:'$180.000' },
-    p4: { name:'Agile Essentials (2 sesiones)', price:'$70.000' }
+    p4: { name:'Agile Essentials (2 sesiones)', price:'$70.000' },
+    p5: { name:'Simulación de entrevista PO/PM (banca y fintech)', price:'$40.000' }
   },
   aiEndpoint: '',      // POST /evaluate — feedback con rúbrica de respuestas escritas
   leadEndpoint: '',    // POST /lead — notificación de leads (guía, packs) al agente
@@ -680,6 +799,7 @@ let cur = 0, animLock = false;
 slides.forEach((s, i) => {
   const d = document.createElement('button');
   d.className = 'dot';
+  d.setAttribute('aria-label', s.dataset.name);
   d.setAttribute('data-hover','');
   d.innerHTML = `<span class="lbl">${s.dataset.name}</span>`;
   d.addEventListener('click', () => goTo(i));
@@ -695,25 +815,54 @@ function render(){
     else s.classList.add('above');
   });
   dots.forEach((d, i) => d.classList.toggle('on', i === cur));
-  document.querySelectorAll('[data-nav]').forEach(b => b.classList.toggle('on', parseInt(b.dataset.nav) === cur));
+  document.querySelectorAll('[data-go]').forEach(b => b.classList.toggle('on', b.dataset.go === slides[cur].dataset.name));
   cNow.textContent = String(cur + 1).padStart(2, '0');
   document.getElementById('cTotal').textContent = String(slides.length).padStart(2, '0');
 }
+const slug = t => t.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,'-');
 function goTo(i){
   if (i < 0 || i >= slides.length || i === cur || animLock) return;
   animLock = true;
   cur = i;
+  slides[cur].scrollTop = 0;
   render();
+  try { history.replaceState(null, '', '#' + slug(slides[cur].dataset.name)); } catch (e) {}
   setTimeout(() => animLock = false, 750);
 }
+function goToName(n){ goTo(slides.findIndex(x => x.dataset.name === n)); }
+/* ¿la pantalla activa tiene más contenido por scrollear en esa dirección? */
+function canScroll(dir){
+  const el = slides[cur], max = el.scrollHeight - el.clientHeight;
+  if (max <= 4) return false;
+  return dir > 0 ? el.scrollTop < max - 4 : el.scrollTop > 4;
+}
+let lastInner = 0;
+/* menú móvil */
+(function(){
+  const box = document.getElementById('mlinks');
+  slides.forEach(sl => {
+    const b = document.createElement('button');
+    b.dataset.go = sl.dataset.name; b.textContent = sl.dataset.name;
+    b.addEventListener('click', () => { closeOverlay('menuOverlay'); goToName(sl.dataset.name); });
+    box.appendChild(b);
+  });
+})();
 function step(dir){ goTo(cur + dir); }
 render();
+(function(){
+  const h = location.hash.replace('#','');
+  const i = slides.findIndex(x => slug(x.dataset.name) === h);
+  if (i > 0) { cur = i; render(); }
+})();
 
 /* rueda del mouse (solo desktop con hover) */
 if (window.matchMedia('(hover:hover)').matches) {
   let acc = 0;
   window.addEventListener('wheel', e => {
     if (document.querySelector('.overlay.open')) return;
+    const d = e.deltaY > 0 ? 1 : -1;
+    if (canScroll(d)) { lastInner = Date.now(); acc = 0; return; }
+    if (Date.now() - lastInner < 450) return;
     acc += e.deltaY;
     if (Math.abs(acc) > 60) { step(acc > 0 ? 1 : -1); acc = 0; }
   }, { passive:true });
@@ -724,17 +873,24 @@ document.addEventListener('keydown', e => {
     if (e.key === 'Escape') document.querySelectorAll('.overlay.open').forEach(o => closeOverlay(o.id));
     return;
   }
-  if (['ArrowDown','PageDown',' '].includes(e.key)) { e.preventDefault(); step(1); }
-  if (['ArrowUp','PageUp'].includes(e.key)) { e.preventDefault(); step(-1); }
+  const t = e.target, tag = t && t.tagName;
+  if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable)) return;
+  if (e.key === ' ' && tag === 'BUTTON') return;
+  const dir = ['ArrowDown','PageDown',' '].includes(e.key) ? 1 : (['ArrowUp','PageUp'].includes(e.key) ? -1 : 0);
+  if (!dir) return;
+  e.preventDefault();
+  if (canScroll(dir)) { lastInner = Date.now(); slides[cur].scrollBy({ top: dir * 140, behavior:'smooth' }); }
+  else if (Date.now() - lastInner > 450) step(dir);
 });
 /* swipe táctil */
 let touchY = null;
 const deck = document.getElementById('deck');
-deck.addEventListener('touchstart', e => { touchY = e.touches[0].clientY; }, { passive:true });
+let touchCan = null;
+deck.addEventListener('touchstart', e => { touchY = e.touches[0].clientY; touchCan = { 1: canScroll(1), '-1': canScroll(-1) }; }, { passive:true });
 deck.addEventListener('touchend', e => {
   if (touchY === null) return;
-  const dy = touchY - e.changedTouches[0].clientY;
-  if (Math.abs(dy) > 55) step(dy > 0 ? 1 : -1);
+  const dy = touchY - e.changedTouches[0].clientY, d = dy > 0 ? 1 : -1;
+  if (Math.abs(dy) > 55 && !(touchCan && touchCan[d])) step(d);
   touchY = null;
 }, { passive:true });
 
@@ -756,7 +912,7 @@ function buyPack(id){
 function confirmBuy(){
   const pack = CONFIG.packs[currentPack];
   closeOverlay('buyModal');
-  openContact(`Quiero agendar el ${pack.name} (${pack.price} CLP). Me interesa pagar por transferencia bancaria.`, null, null, 'Compra / agendamiento');
+  openContact(`Quiero agendar el ${pack.name} (${pack.price} CLP). Me interesa pagar por transferencia bancaria.`, null, null, 'Compra / agendamiento', 'pack-' + currentPack);
 }
 
 /* caso gratis → descarga TXT + lead */
@@ -797,6 +953,11 @@ answerBox.addEventListener('input', () => {
   const n = answerBox.value.trim().split(/\s+/).filter(Boolean).length;
   wordCount.textContent = n + ' palabra' + (n === 1 ? '' : 's');
   wordCount.classList.toggle('ok', n >= 40);
+});
+document.getElementById('ivBtn').addEventListener('click', () => {
+  const a = document.getElementById('ivAnswer');
+  a.classList.toggle('open');
+  document.getElementById('ivIcon').textContent = a.classList.contains('open') ? '↑' : '↓';
 });
 document.getElementById('seniorBtn').addEventListener('click', () => {
   const s = document.getElementById('seniorAnswer');
@@ -922,7 +1083,7 @@ CUÁL ELEGIR SEGÚN TU PERFIL
    practica con simulacros y rinde. Enfocado en rigor del framework.
 2. Quieres experiencia guiada, en vivo, con gente real y red
    de contactos: CSPO. Pagas más, pero el curso te obliga a
-   practizar dos días seguidos.
+   practicar dos días seguidos.
 3. No sabes scrum básico aún: NINGUNA todavía. Primero
    fundamentos; rendir sin saber es quemar plata.
 
@@ -1007,7 +1168,9 @@ function renderQuiz(){
 renderQuiz();
 
 /* FORMULARIO DE CONTACTO — canal único con personas (sigue abajo). */
-function openContact(prefill, name, email, topic){
+let contactSource = 'sitio';
+function openContact(prefill, name, email, topic, source){
+  contactSource = source || 'sitio';
   if (prefill !== undefined && prefill !== null) document.getElementById('ctMsg').value = prefill;
   if (name) document.getElementById('ctName').value = name;
   if (email) document.getElementById('ctEmail').value = email;
@@ -1026,6 +1189,7 @@ document.getElementById('contactForm').addEventListener('submit', async e => {
     email: document.getElementById('ctEmail').value.trim(),
     topic: document.getElementById('ctTopic').value,
     message: document.getElementById('ctMsg').value.trim(),
+    source: contactSource,
     ts: Date.now()
   };
   showToast('Enviando tu mensaje…');
@@ -1055,6 +1219,7 @@ function downloadPspoGuide(){
 window.downloadPspoGuide = downloadPspoGuide;
 
 window.goTo = goTo;
+window.goToName = goToName;
 window.openOverlay = openOverlay;
 window.closeOverlay = closeOverlay;
 window.buyPack = buyPack;

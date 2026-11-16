@@ -25,6 +25,14 @@ testimonios falsos.
   estudiantes ($40k/$100k/$180k), Agile Essentials $70k, botón "Feedback con IA",
   foto mentor embebida (edición propia), bug de Lenis (colisión de globales) resuelto con IIFE.
 
+- **V11**: mejora integral. Hero sin desbordes (tamaño por alto de pantalla), fuentes con fallback condensado,
+  navegación por nombre + #hash compartible (ej. frio.cl/#entrevistas), menú móvil, puntos de navegación sin solapes,
+  scroll interno de pantallas largas (rueda/swipe/teclado ya no saltan de pantalla a mitad de lectura),
+  espacio en textarea ya no navega, secciones responsivas (Metodología, Ecosistema), accesibilidad (foco, reduced-motion),
+  OG/favicon, nueva pantalla «Entrevistas» (p5) y `source` en el formulario para medir de dónde viene cada lead.
+  Pantalla Entrevistas con rúbrica propia (30/25/25/20 + regla de veto), caso de muestra de pagos (cifras sintéticas revisadas) y FAQ de grabación (borrado a los 30 días: PENDIENTE confirmación de Pedro).
+  Bugs corregidos: «Ver packs» llevaba a Práctica; typos («papado», «practizar»).
+
 ## Decisiones vigentes
 - No pasarela de pago: transferencia bancaria sola.
 - No garantía de empleo; "no somos bolsa de trabajo" en FAQ y disclaimer.

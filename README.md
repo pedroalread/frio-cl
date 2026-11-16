@@ -1,6 +1,6 @@
 # Frio.cl — Formación práctica de Product Owner & metodologías ágiles
 
-Sitio one-page tipo deck (8 pantallas, navegación por transiciones) para la oferta de
+Sitio one-page tipo deck (11 pantallas, navegación por transiciones y por #hash) para la oferta de
 mentorías y programas de formación: Product Owner (fuerte principal) y metodologías
 ágiles en general (Agile Essentials).
 
@@ -21,7 +21,7 @@ mentorías y programas de formación: Product Owner (fuerte principal) y metodol
 - Historial real desde este commit; no crear proyectos paralelos.
 
 ## Decisiones de producto vigentes
-- Público: estudiantes (precios con descuento estudiantil).
+- Público: estudiantes (precios con descuento estudiantil). Excepción: pantalla «Entrevistas» (p5, $40.000), dirigida a profesionales que ya postulan a PO/PM en banca y fintech; precio es HIPÓTESIS a validar.
 - Pagos: solo transferencia bancaria (sin pasarela por ahora).
 - Sin garantía de empleo, sin testimonios falsos. Leads vía WhatsApp.
 - Lead magnet: guía de historias de usuario (descarga TXT).
