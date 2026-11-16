@@ -13,7 +13,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0a0a'/%3E%3Ctext x='32' y='45' font-size='40' text-anchor='middle' font-family='Impact,Arial Narrow,sans-serif' fill='%23c8ff2e'%3EF%3C/text%3E%3C/svg%3E">
 <meta name="description" content="Formación práctica en metodologías ágiles para personas que quieren trabajar como Product Owner. Casos reales, feedback concreto, cero teoría inflada.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js');</script>
 <style>
   :root { --lime:#c8ff2e; --ink:#0a0a0a; --smoke:#141414; --mist:#a3a3a3; --display:'Anton','Impact','Haettenschweiler','Arial Narrow Bold',sans-serif; --text:'Archivo',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif; }
@@ -225,6 +225,75 @@
     .ticker-track, #hint { animation:none; }
     .slide, .slide.active { transition:none; }
   }
+
+  /* ================= V12: tema editorial claro (ref. stevenmengin.com) ================= */
+  :root { --lime:#c80000; --ink:#ffffff; --smoke:#f2f2f2; --mist:#5c5c5c; --fg:#0d0d0d; --line:rgba(0,0,0,.14);
+    --display:'Instrument Serif','Iowan Old Style','Palatino Linotype',Georgia,serif; --r:5px; }
+  body:has(.slide.active[data-name="Inicio"]) { --lime:#ff5a4a; --ink:#0b0b0b; --smoke:#171717; --mist:#b9b9b9; --fg:#f5f5f5; --line:rgba(255,255,255,.16); }
+  body { color:var(--fg); }
+  #grain, #cursor { display:none !important; }
+  ::selection { background:var(--fg); color:var(--ink); }
+  .font-display, .h-title, .card h3, .tab-panel h3, .price, .card .num, .tab-btn, .ticker-track { text-transform:none !important; letter-spacing:-.01em; font-weight:400; }
+  .h-title { line-height:1.02; letter-spacing:-.02em; }
+  .stroke-text { -webkit-text-stroke:0; color:var(--lime); font-style:italic; }
+  .stroke-white { -webkit-text-stroke:0; color:var(--mist); font-style:italic; }
+  .eyebrow, [style*="text-transform:uppercase"], .dot .lbl, #hint, .badge { text-transform:none !important; letter-spacing:.01em !important; }
+  .eyebrow { color:var(--mist); font-size:.85rem; }
+  [style*="letter-spacing:.22em"], [style*="letter-spacing:.2em"], [style*="letter-spacing:.25em"], [style*="letter-spacing:.3em"], [style*="letter-spacing:.12em"] { letter-spacing:.01em !important; }
+  [style*="color:#fff"] { color:var(--fg) !important; }
+  [style*="rgba(255,255,255"] { border-color:var(--line) !important; }
+  #header { background:rgba(255,255,255,.86); border-bottom:1px solid var(--line); }
+  body:has(.slide.active[data-name="Inicio"]) #header { background:rgba(11,11,11,.35); }
+  .hnav { color:var(--fg); }
+  .hnav button:hover, .hnav button.on { color:var(--lime); }
+  .btn-lime, .btn-solid { background:var(--fg); color:var(--ink); border-radius:var(--r); font-weight:500; }
+  .btn-lime:hover, .btn-solid:hover { transform:none; background:var(--lime); color:#fff; }
+  .btn-ghost, .btn-full, .menu-btn, .tab-btn { border:1px solid var(--fg); color:var(--fg); border-radius:var(--r); background:transparent; }
+  .btn-ghost:hover, .btn-full:hover { transform:none; border-color:var(--lime); color:var(--lime); }
+  .tab-btn.active { background:var(--fg); color:var(--ink); border-color:var(--fg); }
+  .card, .panel-box, .obox, #toast { background:var(--smoke); border:none; border-radius:6px; }
+  .card:hover { transform:none; box-shadow:none; background:var(--smoke); outline:1px solid var(--fg); }
+  .card.hot { box-shadow:none; outline:2px solid var(--lime); }
+  .badge { background:var(--lime); color:#fff; border-radius:var(--r); font-weight:500; }
+  .card h3 { font-size:1.7rem; }
+  .card p, .card li, .card li small { color:var(--mist); }
+  .card li::before, .proof span::before, .iv-foot li::before { content:'—'; color:var(--lime); }
+  .price { color:var(--fg); font-size:3rem; }
+  .ticker { background:transparent; border-top:1px solid var(--line); }
+  .ticker-track { font-size:1.05rem; font-style:italic; }
+  .ticker-track span b { display:none; }
+  .ticker-track span::after { content:'/'; margin-left:3rem; color:var(--lime); font-style:normal; }
+  .hero-glow { display:none; }
+  .slide[data-name="Inicio"] { background:radial-gradient(ellipse 90% 70% at 50% 88%, #7d7d7d 0, #2a2a2a 38%, #0b0b0b 72%); }
+  .slide[data-name="Inicio"] .swrap { align-items:center; text-align:center; }
+  .slide[data-name="Inicio"] .swrap > div { justify-content:center !important; }
+  .slide[data-name="Inicio"] p { margin-left:auto; margin-right:auto; }
+  .slide[data-name="Inicio"] .proof { justify-content:center; }
+  .hero-title { font-size:clamp(3rem, min(12vw, 18vh), 9.5rem); }
+  .tab-panel p.case, .bio p, .senior-box, #aiBox { color:var(--mist); }
+  .bio b { color:var(--fg); }
+  .bio .lime { color:var(--lime); }
+  textarea, input.f, select.f, textarea.f { background:var(--ink); color:var(--fg); border:1px solid var(--line); border-radius:var(--r); }
+  textarea:focus, input.f:focus, select.f:focus, textarea.f:focus { border-color:var(--fg); }
+  .senior-btn { color:var(--fg); border:1px solid var(--fg); border-radius:var(--r); }
+  .senior-btn:hover { background:var(--fg); color:var(--ink); }
+  .senior-box, #aiBox { background:var(--smoke); border-left:3px solid var(--lime); border-radius:0 var(--r) var(--r) 0; }
+  .mentor-photo { border:none; border-radius:var(--r); filter:grayscale(1) contrast(1.05); }
+  .chips span { border:1px solid var(--line); border-radius:var(--r); color:var(--mist); }
+  .overlay { background:rgba(0,0,0,.5); }
+  .faq-item, .mlinks button { background:var(--ink); border:1px solid var(--line); border-radius:var(--r); }
+  .faq-q, .mlinks button { color:var(--fg); }
+  .faq-icon, .mlinks button::after { color:var(--lime); }
+  .mlinks button.on { border-color:var(--lime); color:var(--lime); }
+  .x-btn:hover { color:var(--fg); }
+  .dot { border-color:var(--fg); } .dot.on { background:var(--fg); border-color:var(--fg); }
+  .dot .lbl { color:var(--fg); }
+  #counter { color:var(--mist); } #counter b { color:var(--fg); }
+  #hint { color:var(--mist); }
+  #fade { background:linear-gradient(to top, var(--ink) 30%, transparent); }
+  #progressbar { background:var(--lime); }
+  #preloader { background:var(--ink); }
+  :focus-visible { outline-color:var(--lime); }
 </style>
 </head>
 <body>
