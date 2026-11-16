@@ -305,6 +305,9 @@
   #progressbar { background:var(--lime); }
   #preloader { background:var(--ink); }
   :focus-visible { outline-color:var(--lime); }
+  .card li { display:block; position:relative; padding:.3rem 0 .3rem 1.5rem; line-height:1.45; }
+  .card li::before { position:absolute; left:0; top:.3rem; }
+  .card li small { display:block; margin-top:.15rem; }
 </style>
 </head>
 <body>
@@ -404,7 +407,7 @@
         <div class="card anim d5" data-hover>
           <div class="num">03</div>
           <h3>Feedback y repetición</h3>
-          <p>Practicas de nuevo lo que falló, con criterio nuevo. La mayoría ejecuta el rol con soltura en 2–3 sesiones: no magia, práctica deliberada.</p>
+          <p>Practicas de nuevo lo que falló, con criterio nuevo. Es práctica deliberada, no magia: cada ronda corrige la anterior.</p>
         </div>
       </div>
       <div class="anim d6" style="display:flex;flex-wrap:wrap;gap:1.4rem 2.8rem;margin:1.8rem 0;border-top:1px solid rgba(255,255,255,.08);padding-top:1.6rem">
@@ -413,7 +416,7 @@
         <div style="min-width:210px;flex:1"><p style="color:var(--lime);font-size:.68rem;letter-spacing:.22em">MINUTO 45 · FEEDBACK</p><p style="font-weight:600;margin-top:.35rem;font-size:.95rem">Qué haría un PO senior, decisión por decisión</p></div>
         <div style="min-width:210px;flex:1"><p style="color:var(--lime);font-size:.68rem;letter-spacing:.22em">CIERRE · EJERCICIOS</p><p style="font-weight:600;margin-top:.35rem;font-size:.95rem">Focos y práctica para la próxima sesión</p></div>
       </div>
-      <p class="anim d6" style="color:var(--mist);font-size:.85rem;margin-top:2rem;max-width:70ch;line-height:1.6">No somos bolsa de trabajo ni garantizamos empleo. Sí: aprendes el oficio ejecutándolo, con feedback directo en cada sesión. Si no sientes valor real en la primera, lo conversamos.</p>
+      <p class="anim d6" style="color:var(--mist);font-size:.85rem;margin-top:2rem;max-width:70ch;line-height:1.6">No somos bolsa de trabajo ni garantizamos empleo. Sí: aprendes el oficio ejecutándolo, con feedback por escrito después de cada sesión.</p>
     </div>
   </section>
 
@@ -538,7 +541,7 @@
           <h2 class="h-title anim d2" style="font-size:clamp(2.2rem,5vw,4rem);margin:.8rem 0 1.4rem">Producto real,<br><span class="stroke-white">en banca real.</span></h2>
           <p class="anim d3"><b>11+ años</b> trabajando como Product Owner y con equipos ágiles en banca y fintech chilena (AhorrAndo, Consorcio, POS Salcobrand): backlogs, sprints, stakeholders difíciles y entrega real.</p>
           <p class="anim d4">He vivido los problemas que te van a poner en la mesa: el backlog infinito, el sponsor que todo lo quiere ya, el equipo que estima a ojo. Te enseño el oficio como se practica de verdad.</p>
-          <p class="anim d5">No vendo humo: <span class="lime">la mayoría ejecuta el rol con soltura en 2–3 sesiones</span>. No garantizamos empleo — somos formación, no bolsa de trabajo. Si quieres aprender el oficio, sigue avanzando.</p>
+          <p class="anim d5">No vendo humo: no garantizamos empleo ni resultados — somos formación, no bolsa de trabajo. Si quieres aprender el oficio, sigue avanzando.</p>
           <div class="chips anim d6">
             <span>Scrum</span><span>Kanban</span><span>Historias de usuario</span><span>Backlog &amp; priorización</span><span>Métricas ágiles</span>
           </div>
@@ -555,17 +558,17 @@
           <p class="eyebrow anim d1">Packs</p>
           <h2 class="h-title anim d2" style="font-size:clamp(2.2rem,5vw,4rem);margin-top:.6rem">Elige tu <span class="stroke-white">programa</span></h2>
         </div>
-        <p class="anim d3" style="color:var(--mist);font-size:.82rem;max-width:38ch;line-height:1.6">Programas en vivo 1:1, grabados para tu repaso. <b style="color:#fff">Precios con descuento estudiantil</b> — pensados para partir mientras estudias. El fuerte es Product Owner; si solo buscas metodología ágil para ti o tu equipo, también hay opción. Pago solo por transferencia bancaria.</p>
+        <p class="anim d3" style="color:var(--mist);font-size:.82rem;max-width:38ch;line-height:1.6">Programas en vivo 1:1, grabados para tu repaso. <b style="color:#fff">Precios con descuento estudiantil</b> — pensados para partir mientras estudias. Todos los programas de Product Owner incluyen un módulo de metodología ágil. El fuerte es Product Owner; si solo buscas metodología ágil para ti o tu equipo, también hay opción. Pago solo por transferencia bancaria.</p>
       </div>
       <div class="cards">
         <div class="card anim d3" data-hover>
           <p style="color:var(--mist);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;margin-bottom:.8rem">Para partir</p>
-          <h3>Sesión de prueba</h3>
+          <h3>Sesión de diagnóstico</h3>
           <div class="price">$40.000 <small>CLP</small></div>
           <ul>
-            <li>1 sesión práctica (60–70 min)</li>
-            <li>Caso real de rol PO, resuelto contigo</li>
-            <li>Feedback + grabación + ejercicios para seguir</li>
+            <li>1 sesión 1:1 (60–70 min)</li>
+            <li>Diagnóstico de tu nivel y un caso real de rol PO, resuelto contigo</li>
+            <li>Feedback por escrito + grabación + plan de ejercicios</li>
           </ul>
           <button class="btn-full" onclick="buyPack('p1')" data-hover>Agendar sesión</button>
         </div>
@@ -575,9 +578,10 @@
           <h3>Programa · 3 sesiones</h3>
           <div class="price">$100.000 <small>CLP</small></div>
           <ul>
-            <li>Fundamentos ágiles aplicados <small>Scrum de verdad, no la versión del PowerPoint</small></li>
+            <li>Sesión de diagnóstico: tu nivel, tu meta y tu plan</li>
+            <li>Módulo de metodología ágil <small>Scrum, Kanban y los otros roles: con quién vas a trabajar y qué hace cada uno</small></li>
             <li>Práctica guiada: historias de usuario y backlog <small>escribes y priorizas con casos reales</small></li>
-            <li>Plan de aprendizaje entre sesiones <small>focos y ejercicios puntuales tras cada sesión</small></li>
+            <li>Feedback por escrito tras cada sesión <small>focos y ejercicios puntuales para la siguiente</small></li>
             <li>Proyecto: tu primer backlog priorizado, corregido como en un equipo real</li>
           </ul>
           <button class="btn-solid" onclick="buyPack('p2')" data-hover>Agendar pack</button>
@@ -725,6 +729,8 @@
       <div class="faq-item"><button class="faq-q" data-hover>¿Cómo agendo y pago?<span class="faq-icon">+</span></button><div class="faq-a"><p>Completa el formulario de contacto de la página y te respondo personalmente por correo para coordinar agenda. El pago es por transferencia bancaria: envío los datos por el mismo medio y la sesión se confirma al acreditarse el comprobante.</p></div></div>
       <div class="faq-item"><button class="faq-q" data-hover>¿Qué pasa con la grabación de mi simulación de entrevista?<span class="faq-icon">+</span></button><div class="faq-a"><p>Es solo para ti, para que repases. La elimino a los 30 días y no la comparto con nadie. Trabajamos con casos tipo, así que no necesitas compartir información confidencial de tu empleador; el tratamiento de datos sigue criterios de la Ley 21.719.</p></div></div>
       <div class="faq-item"><button class="faq-q" data-hover>¿La simulación asegura que apruebe mi entrevista?<span class="faq-icon">+</span></button><div class="faq-a"><p>No. Ensayas con casos tipo de banca y fintech y recibes feedback honesto con rúbrica. El resultado de tu proceso depende de ti y de la empresa.</p></div></div>
+      <div class="faq-item"><button class="faq-q" data-hover>¿Sirve si todavía soy estudiante o recién egresado?<span class="faq-icon">+</span></button><div class="faq-a"><p>Sí, es para eso: partimos de tu nivel real, sin exigir experiencia laboral. Los casos son situaciones que un PO vive, explicadas desde cero.</p></div></div>
+      <div class="faq-item"><button class="faq-q" data-hover>¿Qué recibo por escrito después de cada sesión?<span class="faq-icon">+</span></button><div class="faq-a"><p>Un resumen breve con lo que hiciste bien, lo que mejorar, y los ejercicios para la próxima sesión. Más la grabación para que repases.</p></div></div>
       <div class="faq-item"><button class="faq-q" data-hover>¿Y si no puedo asistir a una sesión?<span class="faq-icon">+</span></button><div class="faq-a"><p>Con 24 horas de anticipación reagendamos sin costo. Las sesiones no avisadas se consideran realizadas.</p></div></div>
     </div>
   </div>
@@ -798,7 +804,7 @@ const CONFIG = {
   formEndpoint: 'https://formspree.io/f/mdegenge',   // Formspree → correo de Pedro (el correo NO vive en el código)
   images: { hero:'', mentor:'' }, // TODO: fotos reales (ruta o URL)
   packs: {
-    p1: { name:'Sesión de prueba',       price:'$40.000' },
+    p1: { name:'Sesión de diagnóstico',       price:'$40.000' },
     p2: { name:'Programa Base (3 sesiones)',  price:'$100.000' },
     p3: { name:'Programa Completo (6 sesiones)', price:'$180.000' },
     p4: { name:'Agile Essentials (2 sesiones)', price:'$70.000' },
@@ -1228,7 +1234,7 @@ function renderQuiz(){
     }));
   } else {
     const res = qscore <= 2
-      ? ['Nivel 0 — partamos de cero', 'Lo mejor es el Programa Base: fundamentos aplicados y tu primer backlog en la primera semana. Si prefieres probar primero, la Sesión de prueba es la puerta de entrada.', 'p2']
+      ? ['Nivel 0 — partamos de cero', 'Lo mejor es el Programa Base: fundamentos aplicados y tu primer backlog en la primera semana. Si prefieres probar primero, la Sesión de diagnóstico es la puerta de entrada.', 'p2']
       : qscore <= 5
       ? ['Nivel 1 — tienes bases, te falta práctica dirigida', 'El Programa Base (3 sesiones) te lleva de "lo he visto" a "lo hago": casos reales, rúbrica y plan entre sesiones.', 'p2']
       : qscore <= 8
